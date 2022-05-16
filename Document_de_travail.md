@@ -22,9 +22,10 @@ cd drvTest
 ```shell
 cat << 'EOF' > Config.in
 config BR2_PACKAGE_DRVTEST
- bool "drvTest"
- depends on BR2_LINUX_KERNEL
- help
+    bool "drvTest"
+    depends on BR2_LINUX_KERNEL
+    help
+        Hello test help
 EOF
 
 cat << 'EOF' > drvTest.desk
@@ -34,10 +35,11 @@ EOF
 cat << 'EOF' > drvTest.mk
 DRVTEST_VERSION = 1.0
 DRVTEST_MODULE_VERSION = 1.0
-DRVTEST_SITE = ../projetcs/grp9/driver
+DRVTEST_SITE = ../projects/gr9/driver
 DRVTEST_SITE_METHOD = local
 DRVTEST_LICENSE = GPL-2.0
-$(eval$(eval$(kernel-module)) $(generic-package))
+$(eval $(kernel-module))
+$(eval $(generic-package))
 EOF
 ```
 
@@ -64,4 +66,33 @@ Dans le menu `External options -> Custom packages` cocher `drvTest`. Sauvegarder
 
 ```shell
  make -j8
+```
+
+# 16.05.2022
+
+### Compiler un fichier source
+
+```shell
+ cd project/server
+ make
+```
+
+### Envoie du fichier compilé sur le RPI
+
+scp test_drvTest rpi@157.26.91.84:/home/rpi/prg
+
+### Charger le module sur le rpi
+
+```shell
+ssh rpi@157.26.91.84 # Password : rpi
+su # Password : root
+modprobe drvTest
+```
+
+### Lancer le programme
+
+```shell
+cd /home/rpi/prg
+su
+./test_drvTtest
 ```
