@@ -49,7 +49,7 @@ EOF
 cd ~/LinEmb/pi4-config/
 
 # le fichier Config.in est déjas crée avec labo5.d
-sed '$ i\source "$BR2_EXTERNAL_PI4_CONFIG_PATH/package/drvTest/Config.in"' Config.in
+sed -i '$ i\source "$BR2_EXTERNAL_PI4_CONFIG_PATH/package/drvTest/Config.in"' Config.in
 
 ```
 
