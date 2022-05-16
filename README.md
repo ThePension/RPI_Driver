@@ -1,8 +1,8 @@
 # Gr9
 
-## Menbres
+## Membres
 Lucas Gosteli
-Nincolas Aubert
+Nicolas Aubert
 
 ## Architecture
 
