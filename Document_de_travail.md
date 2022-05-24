@@ -136,10 +136,26 @@ Après avoir copié l'exécutable sur le RPI :
 
 Puis, depuis la machine hôte, se connecter au RPI avec VNC sur le port 5900.
 
-## Qt Charts
+# Compiler le client sur la VM
 
-Le client utilise <i>QtCharts</i> pour afficher les données sous forme de graphe.
-Il faut donc ajouter ce module ("Target Packages") et rebuild le noyau.
+```shell
+sudo apt-get install qt5-qmake
+sudo apt-get install qt5-default
+sudo apt-get install libqt5charts5-dev
+```
+
+Regénérer le <i>Makefile</i> avec <i>qmake<i> :
+
+```shell
+qmake qt-client.pro
+```
+
+Compiler :
+
+```shell
+make clean
+make
+```
 
 ## ajouter le driver dans l'image
 
