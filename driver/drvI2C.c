@@ -14,6 +14,8 @@
 #include <linux/uaccess.h>     /* Required for the copy to user function	*/
 #include <linux/moduleparam.h> /* Needed for module parameters 				*/
 #include <linux/device.h>      /* Header to support the kernel Driver Model	*/
+#include <linux/kthread.h>     /* Header to support thread                  */
+#include <linux/delay.h>       /* Header fo msleep                          */
 #include <linux/slab.h>
 #include <linux/i2c.h>
 #include <linux/delay.h>
@@ -32,6 +34,8 @@ static int nbrOpens = 0;                   /* Counts the number of times the dev
 static struct class *devI2CClass = NULL;   /* The device-driver class struct pointer				*/
 static struct device *devI2CDevice = NULL; /* The device-driver device struct pointer				*/
 
+static char data[400] = {-1}; // format i,r,g,b
+
 static struct i2c_adapter *tcs_i2c_adapter = NULL; // I2C Adapter Structure
 static struct i2c_client *tcs_i2c_client = NULL;   // I2C Cient Structure
 
@@ -45,9 +49,57 @@ static ssize_t dev_write(struct file *, const char *, size_t, loff_t *);
 static void TCS_Write(unsigned char *data);
 static void TCS_Read(unsigned char *out_data);
 static int TCS_init(void);
-static void TCS_Convert_IRGB(char data[8], int *out_buff);
+static void TCS_Convert_IRGB(char data[8], char *out_buff);
 static int tcs_probe(struct i2c_client *client, const struct i2c_device_id *id);
 static int tcs_remove(struct i2c_client *client);
+
+/*
+** KTHREAD PART
+*/
+
+static struct task_struct *ts1;
+static int threadRun = 0;
+
+static int kthread_func2(void *arg)
+{
+    /* Every kthread has a struct task_struct associated with it which is it's identifier.
+     * Whenever a thread is schedule for execution, the kernel sets "current" pointer to
+     * it's struct task_struct.
+     * current->comm is the name of the command that caused creation of this thread
+     * current->pid is the process of currently executing thread
+     */
+
+    printk(KERN_INFO "I am thread: %s[PID = %d]\n", current->comm, current->pid);
+    threadRun = 1;
+
+    int i = 0;
+    int max = 400;
+
+    while (threadRun > 0)
+    {
+        char dt[8];
+        TCS_Read(dt);
+        char irgbdata[4] = {0};
+        TCS_Convert_IRGB(dt, irgbdata);
+
+        pr_info("i %c",irgbdata[0]);
+
+        int j = 0;
+        while (j < 4)
+        {
+            data[i++] = irgbdata[j++];
+        }
+
+        if (i > max)
+        {
+            i = 0;
+        }
+
+        msleep(2000);
+    }
+
+    return 0;
+}
 
 /*
 ** DEV PART
@@ -62,7 +114,7 @@ static struct file_operations fops =
     {
         .open = dev_open,
         .read = dev_read,
-        .write = dev_write,
+        // .write = dev_write,
         .release = dev_release,
 };
 
@@ -90,27 +142,18 @@ static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *of
 {
     int error_count = 0;
     // copy_to_user has the format ( * to, *from, size) and returns 0 on success
+    error_count = copy_to_user(buffer, data, 400);
 
-    char data[8];
-    TCS_Read(data);
-    int irgbdata[4] = {0};
-    TCS_Convert_IRGB(data, irgbdata);
-
-    // char msg[] = "{'sensors':[{'TSC' : {'i' : '%d','r' : '%d','g' : '%d','b' : '%d'}}]}";
-    // sprintf(message,msg,irgbdata[0],irgbdata[1],irgbdata[2],irgbdata[3]);
-
-    error_count = copy_to_user(buffer, message, size_of_msg);
-
-if (error_count == 0)
-{ // if true then have success
-    pr_info("devI2C: Sent %d characters to the user\n", size_of_msg);
-    return (size_of_msg = 0); // clear the position to the start and return 0
-}
-else
-{
-    pr_info("devI2C: Failed to send %d characters to the user\n", error_count);
-    return -EFAULT; // Failed -- return a bad address message (i.e. -14)
-}
+    if (error_count == 0)
+    { // if true then have success
+        pr_info("devI2C: Sent %d characters to the user\n", size_of_msg);
+        return (size_of_msg = 0); // clear the position to the start and return 0
+    }
+    else
+    {
+        pr_info("devI2C: Failed to send %d characters to the user\n", error_count);
+        return -EFAULT; // Failed -- return a bad address message (i.e. -14)
+    }
 }
 
 /** @brief This function is called whenever the device is being written to from user space i.e.
@@ -121,13 +164,13 @@ else
  *  @param len The length of the array of data that is being passed in the const char buffer
  *  @param offset The offset if required
  */
-static ssize_t dev_write(struct file *filep, const char *buffer, size_t len, loff_t *offset)
-{
-    sprintf(message, "%s(%zu letters)", buffer, len); // appending received string with its length
-    size_of_msg = strlen(message);                    // store the length of the stored message
-    pr_info("devTest: Received %zu characters from the user\n", len);
-    return len;
-}
+// static ssize_t dev_write(struct file *filep, const char *buffer, size_t len, loff_t *offset)
+// {
+//     sprintf(message, "%s(%zu letters)", buffer, len); // appending received string with its length
+//     size_of_msg = strlen(message);                    // store the length of the stored message
+//     pr_info("devTest: Received %zu characters from the user\n", len);
+//     return len;
+// }
 
 /** @brief The device release function that is called whenever the device is closed/released by
  *  the userspace program
@@ -225,7 +268,6 @@ static void TCS_Read(unsigned char *out_data)
 **      none
 **
 */
-
 static int TCS_init(void)
 {
     char config[2] = {0};
@@ -260,7 +302,7 @@ static int TCS_init(void)
     msleep(10);
 
     TCS_Read(data);
-    int irgbdata[4] = {0};
+    char irgbdata[4] = {0};
     TCS_Convert_IRGB(data, irgbdata);
 
     // Output data to screen
@@ -268,7 +310,6 @@ static int TCS_init(void)
     pr_info("Green color luminance : %d lux \n", irgbdata[2]);
     pr_info("Blue color luminance : %d lux \n", irgbdata[3]);
     pr_info("IR  luminance : %d lux \n", irgbdata[0]);
-
     return 0;
 }
 
@@ -276,12 +317,12 @@ static int TCS_init(void)
 *** @brief This Function convert TCS data to match standard IRGB value
 ***
 **/
-static void TCS_Convert_IRGB(char data[8], int *out_buff)
+static void TCS_Convert_IRGB(char data[8], char *out_buff)
 {
-    out_buff[0] = (data[1] * 256 + data[0]);
-    out_buff[1] = (data[3] * 256 + data[2]);
-    out_buff[2] = (data[5] * 256 + data[4]);
-    out_buff[3] = (data[7] * 256 + data[6]);
+    out_buff[0] = (data[1] * 256 + data[0])+'0';
+    out_buff[1] = (data[3] * 256 + data[2])+'0';
+    out_buff[2] = (data[5] * 256 + data[4])+'0';
+    out_buff[3] = (data[7] * 256 + data[6])+'0';
 }
 
 /*
@@ -382,6 +423,17 @@ static int __init tcs_driver_init(void)
     }
     TCS_init();
     pr_info("Driver Added !!\n");
+
+    int err;
+    ts1 = kthread_run(kthread_func2, NULL, "thread-1");
+    if (IS_ERR(ts1))
+    {
+        printk(KERN_INFO "ERROR: Cannot create thread ts1\n");
+        err = PTR_ERR(ts1);
+        ts1 = NULL;
+        return err;
+    }
+
     return ret;
 }
 
@@ -390,6 +442,9 @@ static int __init tcs_driver_init(void)
 */
 static void __exit tcs_driver_exit(void)
 {
+
+    threadRun = -1;
+    msleep(2500);
 
     device_destroy(devI2CClass, MKDEV(majorNumber, 0)); // remove the device
     class_unregister(devI2CClass);                      // unregister the device class
