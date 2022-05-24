@@ -134,3 +134,8 @@ Après avoir copié l'exécutable sur le RPI :
 ```
 
 Puis, depuis la machine hôte, se connecter au RPI avec VNC sur le port 5900.
+
+## Qt Charts
+
+Le client utilise <i>QtCharts</i> pour afficher les données sous forme de graphe.
+Il faut donc ajouter ce module ("Target Packages") et rebuild le noyau.
