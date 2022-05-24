@@ -1,7 +1,6 @@
 #pragma once
 
-#include <iostream>
-using namespace std;
+#include <QDataStream>
 
 class Data
 { 
@@ -13,6 +12,15 @@ class Data
         float pressure = 0.f;
         // ...
 
-        friend ostream& operator<<(ostream& os, const Data & data);
-        friend istream& operator>>(istream& is, Data & data);
+        friend QDataStream& operator<<(QDataStream& os, const Data& data)
+        {
+            os << data.temperature << data.humidity << data.pressure;
+            return os;
+        }
+
+        friend QDataStream& operator>>(QDataStream& is, Data& data)
+        {
+            is >> data.pressure >> data.humidity >> data.temperature;
+            return is;
+        }
 };

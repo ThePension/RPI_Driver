@@ -37,13 +37,35 @@ void Server::initServer()
                          .arg(ipAddress).arg(tcpServer->serverPort()));
 }
 
+void Server::retrieveData()
+{
+    static char receive[BUFFER_LENGTH];     // The receive buffer from the driver
+
+    int ret, fd;
+
+    fd = open("/dev/drvTest", O_RDWR);             // Open the device with read/write access
+    if (fd < 0)
+    {
+        perror("Failed to open the device...");
+        return;
+    }
+
+    ret = read(fd, receive, BUFFER_LENGTH);        // Read the response from the driver
+    if (ret < 0){
+        perror("Failed to read the message from the device.");
+        return;
+    }
+
+    // this->data.temperature = receive[]
+}
+
 void Server::send()
 {
     QByteArray block;
     QDataStream out(&block, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_10);
 
-    out << 12; // Replace by Data
+    out << this->data;
 
     QTcpSocket *clientConnection = tcpServer->nextPendingConnection();
     connect(clientConnection, &QAbstractSocket::disconnected, clientConnection, &QObject::deleteLater);
