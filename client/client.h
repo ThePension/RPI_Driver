@@ -5,6 +5,7 @@
 #include <QDataStream>
 #include <QDialog>
 #include <QTcpSocket>
+#include <QtCharts>
 
 #include "../common/data.h"
 
@@ -36,4 +37,14 @@ private:
     QTcpSocket *tcpSocket = nullptr;
     QDataStream in;
     Data currentData;
+
+    QBarSet *setTemperature = nullptr;
+    QBarSet *setHumidity = nullptr;
+    QBarSet *setPressure = nullptr;
+
+    QBarSeries *series = nullptr;
+
+    QChart *chart = nullptr;
+
+    QChartView *chartView;
 };

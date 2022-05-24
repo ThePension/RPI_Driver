@@ -1,4 +1,4 @@
-QT += core gui widgets network
+QT += core gui widgets network charts
 
 SOURCES += main_client.cpp \
           mainwindow.cpp \

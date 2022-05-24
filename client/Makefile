@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-gcc
 CXX           = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++
-DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_NO_DEBUG -DQT_CHARTS_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os -g0 --sysroot=/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os -g0 --sysroot=/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I. -I../../../build-pi4/host/mkspecs/devices/linux-buildroot-g++
+INCPATH       = -I. -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I. -I../../../build-pi4/host/mkspecs/devices/linux-buildroot-g++
 QMAKE         = /home/thepension/LinEmb/build-pi4/host/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = qt-client1.0.0
 DISTDIR = /home/thepension/LinEmb/projects/gr9/client/.tmp/qt-client1.0.0
 LINK          = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++
 LFLAGS        = --sysroot=/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wl,-O1
-LIBS          = $(SUBLIBS) -latomic /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Widgets.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Gui.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Network.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Core.so -lpthread  -lrt -lpthread -ldl 
+LIBS          = $(SUBLIBS) -latomic /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Charts.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Widgets.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Gui.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Network.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Core.so -lpthread  -lrt -lpthread -ldl 
 AR            = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-ar cqs
 RANLIB        = 
 SED           = sed
@@ -454,9 +454,10 @@ moc_mainwindow.cpp: mainwindow.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetworkglobal.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetwork-config.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		../common/data.h \
 		moc_predefs.h \
 		../../../build-pi4/host/bin/moc
-	/home/thepension/LinEmb/build-pi4/host/bin/moc $(DEFINES) --include /home/thepension/LinEmb/projects/gr9/client/moc_predefs.h -I/home/thepension/LinEmb/build-pi4/host/mkspecs/devices/linux-buildroot-g++ -I/home/thepension/LinEmb/projects/gr9/client -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/arm-buildroot-linux-uclibcgnueabihf -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/backward -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include-fixed -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/home/thepension/LinEmb/build-pi4/host/bin/moc $(DEFINES) --include /home/thepension/LinEmb/projects/gr9/client/moc_predefs.h -I/home/thepension/LinEmb/build-pi4/host/mkspecs/devices/linux-buildroot-g++ -I/home/thepension/LinEmb/projects/gr9/client -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/arm-buildroot-linux-uclibcgnueabihf -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/backward -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include-fixed -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 moc_client.cpp: client.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QDataStream \
@@ -569,9 +570,10 @@ moc_client.cpp: client.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetworkglobal.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetwork-config.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		../common/data.h \
 		moc_predefs.h \
 		../../../build-pi4/host/bin/moc
-	/home/thepension/LinEmb/build-pi4/host/bin/moc $(DEFINES) --include /home/thepension/LinEmb/projects/gr9/client/moc_predefs.h -I/home/thepension/LinEmb/build-pi4/host/mkspecs/devices/linux-buildroot-g++ -I/home/thepension/LinEmb/projects/gr9/client -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/arm-buildroot-linux-uclibcgnueabihf -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/backward -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include-fixed -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include client.h -o moc_client.cpp
+	/home/thepension/LinEmb/build-pi4/host/bin/moc $(DEFINES) --include /home/thepension/LinEmb/projects/gr9/client/moc_predefs.h -I/home/thepension/LinEmb/build-pi4/host/mkspecs/devices/linux-buildroot-g++ -I/home/thepension/LinEmb/projects/gr9/client -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/arm-buildroot-linux-uclibcgnueabihf -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/backward -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include-fixed -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include client.h -o moc_client.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -705,6 +707,7 @@ main_client.o: main_client.cpp mainwindow.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetworkglobal.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetwork-config.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		../common/data.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QApplication \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qapplication.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcoreapplication.h \
@@ -830,6 +833,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetworkglobal.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetwork-config.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		../common/data.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QtWidgets \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QtWidgetsDepends \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QtCore \
@@ -1721,13 +1725,153 @@ client.o: client.cpp ../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsslkey.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qudpsocket.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetworkversion.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QtCharts \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QtChartsDepends \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qchartglobal.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QtGlobal \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/chartsnamespace.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qabstractaxis.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QChartGlobal \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QPen \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QFont \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qabstractbarseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QAbstractSeries \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qabstractseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QAbstractAxis \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qarealegendmarker.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QLegendMarker \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qlegendmarker.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QLegend \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qlegend.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsWidget \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QBrush \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QAreaSeries \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qareaseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qbarcategoryaxis.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qbarlegendmarker.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QAbstractBarSeries \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QBarSet \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qbarset.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qbarmodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qbarseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qboxplotlegendmarker.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QBoxPlotSeries \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qboxplotseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QBoxSet \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qboxset.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qboxplotmodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qcandlesticklegendmarker.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QCandlestickSeries \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qcandlestickseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qcandlestickmodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qcandlestickset.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qcategoryaxis.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QValueAxis \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qvalueaxis.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qchart.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qchartview.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QChart \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QGraphicsView \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qdatetimeaxis.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qhbarmodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QBarModelMapper \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qhboxplotmodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QBoxPlotModelMapper \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qhcandlestickmodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QCandlestickModelMapper \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qhorizontalbarseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qhorizontalpercentbarseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qhorizontalstackedbarseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qhpiemodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QPieModelMapper \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qpiemodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qhxymodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QXYModelMapper \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qxymodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qlineseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QXYSeries \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qxyseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qlogvalueaxis.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qpercentbarseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qpielegendmarker.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QPieSeries \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qpieseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/QPieSlice \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qpieslice.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qpolarchart.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qscatterseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qsplineseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qstackedbarseries.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qvbarmodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qvboxplotmodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qvcandlestickmodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qvpiemodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qvxymodelmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qxylegendmarker.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCharts/qtchartsversion.h \
 		client.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QDataStream \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QDialog \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/QTcpSocket
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/QTcpSocket \
+		../common/data.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o client.o client.cpp
 
-data.o: ../common/data.cpp ../common/data.h
+data.o: ../common/data.cpp ../common/data.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QDataStream \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdatastream.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qscopedpointer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qglobal.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qconfig-bootstrapped.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qconfig.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtcore-config.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsystemdetection.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qprocessordetection.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcompilerdetection.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtypeinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsysinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlogging.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qflags.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbasicatomic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic_bootstrap.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qgenericatomic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic_cxx11.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic_msvc.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qglobalstatic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmutex.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qnumeric.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qversiontagging.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qiodevice.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobject.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobjectdefs.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qnamespace.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobjectdefs_impl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstring.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qchar.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbytearray.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qrefcount.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qarraydata.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringliteral.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringalgorithms.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringview.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringbuilder.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlist.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qalgorithms.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qiterator.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qhashfunctions.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qpair.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qvector.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcontainertools_impl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qpoint.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbytearraylist.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringlist.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qregexp.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringmatcher.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcoreevent.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmetatype.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qvarlengtharray.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcontainerfwd.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobject_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o data.o ../common/data.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

@@ -3,6 +3,8 @@
 
 #include "client.h"
 
+using namespace QtCharts;
+
 Client::Client(QWidget *parent)
     : QWidget(parent)
     , hostCombo(new QComboBox)
@@ -81,6 +83,29 @@ Client::Client(QWidget *parent)
 
     setWindowTitle(QGuiApplication::applicationDisplayName());
     portLineEdit->setFocus();
+
+    setTemperature = new QBarSet("Température");
+    setHumidity = new QBarSet("Humidité");
+    setPressure = new QBarSet("Pression");
+
+    *setTemperature << 1 << 2 << 3 << 4 << 5 << 6;
+    *setHumidity << 5 << 0 << 0 << 4 << 0 << 7;
+    *setPressure << 3 << 5 << 8 << 13 << 8 << 5;
+
+    series = new QBarSeries();
+
+    series->append(setTemperature);
+    series->append(setHumidity);
+    series->append(setPressure);
+
+    chart = new QChart();
+
+    chart->addSeries(series);
+    chart->setTitle("Simple barchart example");
+    chart->setAnimationOptions(QChart::SeriesAnimations);
+
+    chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
 }
 
 void Client::request()
