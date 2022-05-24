@@ -1,8 +1,10 @@
-QT += core gui widgets
+QT += core gui widgets network
 
 SOURCES += main.cpp \
-          mainwindow.cpp
+          mainwindow.cpp \
+          client.cpp
 
-HEADERS += mainwindow.h
+HEADERS += mainwindow.h \
+            client.h
           
 

@@ -4,7 +4,8 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    // setCentralWidget(nullptr); // TO DO
+    this->client = new Client(this);
+    setCentralWidget(this->client);
 
     setWindowTitle("LinEmb");
     resize(1200,800);
