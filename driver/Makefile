@@ -1,4 +1,4 @@
-obj-m += drvTest.o
+obj-m += drvI2C.o
 
 .PHONY: all clean
 

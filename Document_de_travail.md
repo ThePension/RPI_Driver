@@ -65,6 +65,7 @@ Dans le menu `External options -> Custom packages` cocher `drvTest`. Sauvegarder
 #### Compiler le noyau
 
 ```shell
+ export BR2_EXTERNAL=../pi4-config/
  make -j8
 ```
 
@@ -139,3 +140,14 @@ Puis, depuis la machine hôte, se connecter au RPI avec VNC sur le port 5900.
 
 Le client utilise <i>QtCharts</i> pour afficher les données sous forme de graphe.
 Il faut donc ajouter ce module ("Target Packages") et rebuild le noyau.
+
+## ajouter le driver dans l'image
+
+refaire les memes étapes pour ajouter le driver à l'image que le driverTest.
+
+### charger i2c
+
+modprobe i2c-bcm2835
+modprobe i2c-dev
+modprobe drvI2C
+

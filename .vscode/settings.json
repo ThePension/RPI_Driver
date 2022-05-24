@@ -27,5 +27,7 @@
     ],
     "files.associations": {
         "iosfwd": "cpp"
+        "unistd.h": "c",
+        "kernel.h": "c"
     },
 }
