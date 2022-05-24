@@ -95,19 +95,19 @@ void Client::read()
 
     in.startTransaction();
 
-    QString nextData;
+    Data nextData;
     in >> nextData;
 
     if (!in.commitTransaction())
         return;
 
-    if (nextData == currentData) {
+    /*if (nextData == currentData) {
         QTimer::singleShot(0, this, &Client::request);
         return;
-    }
+    }*/
 
     currentData = nextData;
-    statusLabel->setText(currentData);
+    statusLabel->setText("Temperature : " + QString::number(currentData.temperature));
     getDataButton->setEnabled(true);
 }
 

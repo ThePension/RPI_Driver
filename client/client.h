@@ -6,6 +6,8 @@
 #include <QDialog>
 #include <QTcpSocket>
 
+#include "../common/data.h"
+
 class QComboBox;
 class QLabel;
 class QLineEdit;
@@ -33,5 +35,5 @@ private:
 
     QTcpSocket *tcpSocket = nullptr;
     QDataStream in;
-    QString currentData;
+    Data currentData;
 };
