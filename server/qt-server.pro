@@ -1,3 +1,6 @@
-QT += widgets
-CONFIG += console
-SOURCES = main.cpp
+QT += network widgets
+
+SOURCES += main.cpp \
+            server.cpp
+          
+HEADERS += server.h

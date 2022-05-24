@@ -1,10 +1,23 @@
+/**
+ * @file   main.cpp
+ * @author Lucas Gosteli et eNicolas Aubert
+ * @date   24.05.2022
+ * @version 0.1
+ * @brief  A Linux user space program that communicates with the driver.
+ * It reads the data from the driver and display them
+ * Driver is located in /dev/drvTest
+*/
+
 #include <QApplication>
-#include <QPushButton>
+
+#include "server.h"
 
 int main(int argc, char **argv)
 {
 	QApplication app (argc, argv);
-	QPushButton button ("Hello world !");
-	button.show();
+
+	Server * server = new Server();
+	// server->listen(); // TO DO
+
 	return app.exec();
 }

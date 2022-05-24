@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-gcc
 CXX           = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++
-DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os -g0 --sysroot=/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os -g0 --sysroot=/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I. -I../../../build-pi4/host/mkspecs/devices/linux-buildroot-g++
+INCPATH       = -I. -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I. -I../../../build-pi4/host/mkspecs/devices/linux-buildroot-g++
 QMAKE         = /home/thepension/LinEmb/build-pi4/host/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = qt-server1.0.0
 DISTDIR = /home/thepension/LinEmb/projects/gr9/server/.tmp/qt-server1.0.0
 LINK          = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++
 LFLAGS        = --sysroot=/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wl,-O1
-LIBS          = $(SUBLIBS) -latomic /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Widgets.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Gui.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Core.so -lpthread  -lrt -lpthread -ldl 
+LIBS          = $(SUBLIBS) -latomic /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Widgets.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Gui.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Network.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Core.so -lpthread  -lrt -lpthread -ldl 
 AR            = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-ar cqs
 RANLIB        = 
 SED           = sed
@@ -52,8 +52,11 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = main.cpp 
-OBJECTS       = main.o
+SOURCES       = main.cpp \
+		server.cpp moc_server.cpp
+OBJECTS       = main.o \
+		server.o \
+		moc_server.o
 DIST          = ../../../build-pi4/host/mkspecs/features/spec_pre.prf \
 		../../../build-pi4/host/mkspecs/common/unix.conf \
 		../../../build-pi4/host/mkspecs/common/linux.conf \
@@ -70,6 +73,8 @@ DIST          = ../../../build-pi4/host/mkspecs/features/spec_pre.prf \
 		../../../build-pi4/host/mkspecs/qconfig.pri \
 		../../../build-pi4/host/mkspecs/modules/qt_lib_accessibility_support_private.pri \
 		../../../build-pi4/host/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		../../../build-pi4/host/mkspecs/modules/qt_lib_charts.pri \
+		../../../build-pi4/host/mkspecs/modules/qt_lib_charts_private.pri \
 		../../../build-pi4/host/mkspecs/modules/qt_lib_concurrent.pri \
 		../../../build-pi4/host/mkspecs/modules/qt_lib_concurrent_private.pri \
 		../../../build-pi4/host/mkspecs/modules/qt_lib_core.pri \
@@ -120,7 +125,8 @@ DIST          = ../../../build-pi4/host/mkspecs/features/spec_pre.prf \
 		../../../build-pi4/host/mkspecs/features/exceptions.prf \
 		../../../build-pi4/host/mkspecs/features/yacc.prf \
 		../../../build-pi4/host/mkspecs/features/lex.prf \
-		qt-server.pro  main.cpp
+		qt-server.pro server.h main.cpp \
+		server.cpp
 QMAKE_TARGET  = qt-server
 DESTDIR       = 
 TARGET        = qt-server
@@ -148,6 +154,8 @@ Makefile: qt-server.pro ../../../build-pi4/host/mkspecs/devices/linux-buildroot-
 		../../../build-pi4/host/mkspecs/qconfig.pri \
 		../../../build-pi4/host/mkspecs/modules/qt_lib_accessibility_support_private.pri \
 		../../../build-pi4/host/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		../../../build-pi4/host/mkspecs/modules/qt_lib_charts.pri \
+		../../../build-pi4/host/mkspecs/modules/qt_lib_charts_private.pri \
 		../../../build-pi4/host/mkspecs/modules/qt_lib_concurrent.pri \
 		../../../build-pi4/host/mkspecs/modules/qt_lib_concurrent_private.pri \
 		../../../build-pi4/host/mkspecs/modules/qt_lib_core.pri \
@@ -216,6 +224,8 @@ Makefile: qt-server.pro ../../../build-pi4/host/mkspecs/devices/linux-buildroot-
 ../../../build-pi4/host/mkspecs/qconfig.pri:
 ../../../build-pi4/host/mkspecs/modules/qt_lib_accessibility_support_private.pri:
 ../../../build-pi4/host/mkspecs/modules/qt_lib_bootstrap_private.pri:
+../../../build-pi4/host/mkspecs/modules/qt_lib_charts.pri:
+../../../build-pi4/host/mkspecs/modules/qt_lib_charts_private.pri:
 ../../../build-pi4/host/mkspecs/modules/qt_lib_concurrent.pri:
 ../../../build-pi4/host/mkspecs/modules/qt_lib_concurrent_private.pri:
 ../../../build-pi4/host/mkspecs/modules/qt_lib_core.pri:
@@ -282,7 +292,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../build-pi4/host/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents server.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp server.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -314,8 +325,14 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../build-pi4/host/mkspecs/features/data/dummy.cpp
 	/home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++ -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os -g0 --sysroot=/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wall -Wextra -dM -E -o moc_predefs.h ../../../build-pi4/host/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all:
+compiler_moc_header_make_all: moc_server.cpp
 compiler_moc_header_clean:
+	-$(DEL_FILE) moc_server.cpp
+moc_server.cpp: server.h \
+		moc_predefs.h \
+		../../../build-pi4/host/bin/moc
+	/home/thepension/LinEmb/build-pi4/host/bin/moc $(DEFINES) --include /home/thepension/LinEmb/projects/gr9/server/moc_predefs.h -I/home/thepension/LinEmb/build-pi4/host/mkspecs/devices/linux-buildroot-g++ -I/home/thepension/LinEmb/projects/gr9/server -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/arm-buildroot-linux-uclibcgnueabihf -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/backward -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include-fixed -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include server.h -o moc_server.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
@@ -328,7 +345,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -441,11 +458,277 @@ main.o: main.cpp ../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sys
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtouchdevice.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qguiapplication.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qinputmethod.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QPushButton \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qpushbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h
+		server.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
+
+server.o: server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/QtNetwork \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/QtNetworkDepends \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QtCore \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QtCoreDepends \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qglobal.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qconfig-bootstrapped.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qconfig.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtcore-config.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsystemdetection.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qprocessordetection.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcompilerdetection.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtypeinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsysinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlogging.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qflags.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbasicatomic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic_bootstrap.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qgenericatomic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic_cxx11.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic_msvc.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qglobalstatic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmutex.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qnumeric.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qversiontagging.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstractanimation.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobject.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobjectdefs.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qnamespace.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobjectdefs_impl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstring.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qchar.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbytearray.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qrefcount.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qarraydata.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringliteral.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringalgorithms.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringview.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringbuilder.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlist.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qalgorithms.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qiterator.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qhashfunctions.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qpair.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qvector.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcontainertools_impl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qpoint.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbytearraylist.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringlist.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qregexp.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringmatcher.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcoreevent.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qscopedpointer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmetatype.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qvarlengtharray.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcontainerfwd.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobject_impl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstracteventdispatcher.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qeventloop.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qvariant.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmap.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdebug.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qhash.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtextstream.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qiodevice.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlocale.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qshareddata.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qset.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcontiguouscache.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsharedpointer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsharedpointer_impl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstractnativeeventfilter.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstractproxymodel.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstractstate.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstracttransition.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qanimationgroup.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qarraydataops.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qarraydatapointer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbasictimer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbitarray.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbuffer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbytearraymatcher.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcache.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcalendar.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcborarray.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcborvalue.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdatetime.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcborcommon.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qregularexpression.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qurl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qurlquery.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/quuid.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcbormap.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcborstream.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcborstreamreader.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfloat16.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcborstreamwriter.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcollator.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcommandlineoption.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcommandlineparser.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcoreapplication.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qconcatenatetablesproxymodel.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcryptographichash.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdatastream.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdeadlinetimer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qelapsedtimer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfile.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfiledevice.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdiriterator.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qendian.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qeventtransition.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qexception.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfactoryinterface.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfileselector.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QObject \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QStringList \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfilesystemwatcher.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfinalstate.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfuture.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfutureinterface.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qrunnable.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qresultstore.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfuturesynchronizer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfuturewatcher.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qhistorystate.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qidentityproxymodel.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qisenum.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qitemselectionmodel.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qjsonarray.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qjsonvalue.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qjsondocument.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qjsonobject.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlibrary.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlibraryinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qversionnumber.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qline.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlinkedlist.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlockfile.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qloggingcategory.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmargins.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmath.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmessageauthenticationcode.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmetaobject.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmimedata.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmimedatabase.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmimetype.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobjectcleanuphandler.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qoperatingsystemversion.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qparallelanimationgroup.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qpauseanimation.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qplugin.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qpointer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qpluginloader.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qprocess.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qpropertyanimation.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qvariantanimation.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qqueue.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qrandom.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qreadwritelock.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qrect.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsize.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qresource.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsavefile.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qscopedvaluerollback.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qscopeguard.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsemaphore.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsequentialanimationgroup.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsettings.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsharedmemory.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsignalmapper.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsignaltransition.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsocketnotifier.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsortfilterproxymodel.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstack.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstandardpaths.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstate.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstatemachine.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstorageinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringlistmodel.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsystemsemaphore.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtemporarydir.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtemporaryfile.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtextboundaryfinder.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtextcodec.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qthread.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qthreadpool.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qthreadstorage.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtimeline.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtimer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtimezone.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtranslator.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtransposeproxymodel.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtypetraits.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qwaitcondition.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QDeadlineTimer \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qwineventnotifier.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qxmlstream.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtcoreversion.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetworkglobal.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetwork-config.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qabstractnetworkcache.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkrequest.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QSharedDataPointer \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QString \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QUrl \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QVariant \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qauthenticator.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qdnslookup.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qdtls.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsslsocket.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsslerror.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsslcertificate.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qssl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QFlags \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qhostaddress.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qhostinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qhstspolicy.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qhttp2configuration.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qhttpmultipart.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QByteArray \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QIODevice \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/QNetworkRequest \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qlocalserver.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qlocalsocket.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkaccessmanager.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QVector \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/QSslConfiguration \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsslconfiguration.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/QSslPreSharedKeyAuthenticator \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsslpresharedkeyauthenticator.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QMetaType \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkconfigmanager.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkconfiguration.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkcookie.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QList \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkcookiejar.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkdatagram.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkdiskcache.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkinterface.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkproxy.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworkreply.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/QNetworkAccessManager \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qnetworksession.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qocspresponse.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qpassworddigestor.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QCryptographicHash \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsctpserver.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtcpserver.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsctpsocket.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsslcertificateextension.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsslcipher.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qssldiffiehellmanparameters.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsslellipticcurve.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QHash \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qsslkey.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qudpsocket.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetworkversion.h \
+		server.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o server.o server.cpp
+
+moc_server.o: moc_server.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_server.o moc_server.cpp
 
 ####### Install
 
