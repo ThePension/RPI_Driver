@@ -96,3 +96,32 @@ cd /home/rpi/prg
 su
 ./test_drvTtest
 ```
+
+# 24.05.2022
+
+## Compiler une application Qt
+
+Créer un fichier .pro et ajouter son contenu, par exemple :
+
+```
+QT += network widgets
+
+SOURCES += main.cpp \
+            server.cpp
+          
+HEADERS += server.h
+```
+
+Pour créer le bon fichier <i>Makefile</i>, utiliser l’outil <i>qmake</i> de Qt qui se trouve dans le dossier généré <i>build-pi4/host/bin</i>.
+Il faut le refaire à chaque que le fichier .pro est modifié.
+
+```shell
+~/LinEmb/build-pi4/host/bin/qmake qt-server.pro
+```
+
+Ensuite, pour compiler, entrer la commande
+
+```shell
+make
+```
+
