@@ -63,19 +63,17 @@ Client::Client(QWidget *parent)
     setWindowTitle(QGuiApplication::applicationDisplayName());
     portLineEdit->setFocus();
 
-    setTemperature = new QBarSet("Température");
-    setHumidity = new QBarSet("Humidité");
-    setPressure = new QBarSet("Pression");
-
-    *setTemperature << 1 << 2 << 3 << 4 << 5 << 6;
-    *setHumidity << 5 << 0 << 0 << 4 << 0 << 7;
-    *setPressure << 3 << 5 << 8 << 13 << 8 << 5;
+    setLuminosity = new QBarSet("Luminosity");
+    setRed = new QBarSet("Red");
+    setBlue = new QBarSet("Blue");
+    setGreen = new QBarSet("Green");
 
     series = new QBarSeries();
 
-    series->append(setTemperature);
-    series->append(setHumidity);
-    series->append(setPressure);
+    series->append(setLuminosity);
+    series->append(setRed);
+    series->append(setBlue);
+    series->append(setGreen);
 
     chart = new QChart();
 
@@ -91,7 +89,6 @@ Client::Client(QWidget *parent)
 
 void Client::request()
 {
-    statusLabel->setText("Requesting...");
     tcpSocket->abort();
     tcpSocket->connectToHost(hostCombo->currentText(), portLineEdit->text().toInt());
 }
@@ -102,20 +99,20 @@ void Client::read()
 
     in.startTransaction();
 
-    Data nextData;
-    in >> nextData;
+    for(int i = 0; i < DATA_NUMBER; i++)
+    {
+        Data nextData;
+        in >> nextData;
+        datas[i] = nextData;
+    }   
 
     if (!in.commitTransaction())
         return;
 
-    /*if (nextData == currentData) {
-        QTimer::singleShot(0, this, &Client::request);
-        return;
-    }*/
-
-    currentData = nextData;
-    statusLabel->setText("Temperature : " + QString::number(currentData.temperature));
+    statusLabel->setText("Datas received" + QString::number(datas[0].red));
     getDataButton->setEnabled(true);
+
+    displayData();
 }
 
 void Client::displayError(QAbstractSocket::SocketError socketError)
@@ -148,4 +145,18 @@ void Client::enableGetDataButton()
     getDataButton->setEnabled(!hostCombo->currentText().isEmpty() &&
                                  !portLineEdit->text().isEmpty());
 
+}
+
+void Client::displayData()
+{
+    for(int i = 0; i < DATA_NUMBER; i++)
+    {
+        *setLuminosity << datas[i].luminosity;
+        *setRed << datas[i].red;
+        *setBlue << datas[i].blue;
+        *setGreen << datas[i].green;
+    }
+    this->update();
+    chart->update();
+    chartView->update();
 }

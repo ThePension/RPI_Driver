@@ -7,20 +7,21 @@ class Data
     public:
         Data();
 
-        float temperature = 0.f;
-        float humidity = 0.f;
-        float pressure = 0.f;
+        int luminosity = 0;
+        int red = 0;
+        int blue = 0;
+        int green = 0;
         // ...
 
         friend QDataStream& operator<<(QDataStream& os, const Data& data)
         {
-            os << data.temperature << data.humidity << data.pressure;
+            os << data.luminosity << data.red << data.blue << data.green;
             return os;
         }
 
         friend QDataStream& operator>>(QDataStream& is, Data& data)
         {
-            is >> data.pressure >> data.humidity >> data.temperature;
+            is >> data.luminosity >> data.red >> data.blue >> data.green;
             return is;
         }
 };

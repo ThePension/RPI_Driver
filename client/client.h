@@ -10,6 +10,8 @@
 
 #include "../common/data.h"
 
+#define DATA_NUMBER 100 
+
 class QComboBox;
 class QLabel;
 class QLineEdit;
@@ -37,15 +39,18 @@ private:
 
     QTcpSocket *tcpSocket = nullptr;
     QDataStream in;
-    Data currentData;
+    Data datas[DATA_NUMBER];
 
-    QBarSet *setTemperature = nullptr;
-    QBarSet *setHumidity = nullptr;
-    QBarSet *setPressure = nullptr;
+    QBarSet *setLuminosity = nullptr;
+    QBarSet *setRed = nullptr;
+    QBarSet *setBlue = nullptr;
+    QBarSet *setGreen = nullptr;
 
     QBarSeries *series = nullptr;
 
     QChart *chart = nullptr;
 
     QChartView *chartView;
+
+    void displayData();
 };

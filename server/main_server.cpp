@@ -4,7 +4,7 @@
  * @date   24.05.2022
  * @version 0.1
  * @brief  A Linux user space program that communicates with the driver.
- * It reads the data from the driver and display them
+ * It reads the data from the driver and sent them
  * Driver is located in /dev/drvTest
 */
 
@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 	QCoreApplication app(argc, argv);
 
 	Server * server = new Server();
+
 	server->retrieveData();
 
 	return app.exec();

@@ -13,7 +13,8 @@
 
 #include "../common/data.h"
 
-#define BUFFER_LENGTH 256 // The buffer length 
+#define BUFFER_LENGTH 256 // The buffer length
+#define DATA_NUMBER 100 
 
 class QTcpServer;
 
@@ -31,7 +32,7 @@ private slots:
 private:
     void initServer();
 
-    Data data;
+    Data datas[DATA_NUMBER];
     QString status = nullptr;
     QTcpServer *tcpServer = nullptr;
 };

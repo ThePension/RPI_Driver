@@ -35,14 +35,14 @@ void Server::initServer()
 
 void Server::retrieveData()
 {
-    static char receive[BUFFER_LENGTH];     // The receive buffer from the driver
+    char receive[BUFFER_LENGTH];     // The receive buffer from the driver
 
     int ret, fd;
 
     fd = open("/dev/drvI2C", O_RDWR);             // Open the device with read/write access
     if (fd < 0)
     {
-        perror("Failed to open the device...1");
+        perror("Failed to open the device...");
         return;
     }
 
@@ -55,6 +55,13 @@ void Server::retrieveData()
     printf("The received message is: [%s]\n", receive);
 
     // this->data.temperature = receive[]
+     for(int i = 0; i < DATA_NUMBER; i++)
+     {
+        this->datas[i].luminosity = 1;
+        this->datas[i].red = 2;
+        this->datas[i].blue = 3;
+        this->datas[i].green = 4;
+     }
 }
 
 void Server::send()
@@ -63,7 +70,10 @@ void Server::send()
     QDataStream out(&block, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_10);
 
-    out << this->data;
+    for(int i = 0; i < DATA_NUMBER; i++)
+    {
+        out << this->datas[i];
+    }  
 
     QTcpSocket *clientConnection = tcpServer->nextPendingConnection();
     connect(clientConnection, &QAbstractSocket::disconnected, clientConnection, &QObject::deleteLater);
