@@ -54,11 +54,13 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main_client.cpp \
 		mainwindow.cpp \
-		client.cpp moc_mainwindow.cpp \
+		client.cpp \
+		../common/data.cpp moc_mainwindow.cpp \
 		moc_client.cpp
 OBJECTS       = main_client.o \
 		mainwindow.o \
 		client.o \
+		data.o \
 		moc_mainwindow.o \
 		moc_client.o
 DIST          = ../../../build-pi4/host/mkspecs/features/spec_pre.prf \
@@ -130,9 +132,11 @@ DIST          = ../../../build-pi4/host/mkspecs/features/spec_pre.prf \
 		../../../build-pi4/host/mkspecs/features/yacc.prf \
 		../../../build-pi4/host/mkspecs/features/lex.prf \
 		qt-client.pro mainwindow.h \
-		client.h main_client.cpp \
+		client.h \
+		../common/data.h main_client.cpp \
 		mainwindow.cpp \
-		client.cpp
+		client.cpp \
+		../common/data.cpp
 QMAKE_TARGET  = qt-client
 DESTDIR       = 
 TARGET        = qt-client
@@ -298,8 +302,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../build-pi4/host/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h client.h $(DISTDIR)/
-	$(COPY_FILE) --parents main_client.cpp mainwindow.cpp client.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h client.h ../common/data.h $(DISTDIR)/
+	$(COPY_FILE) --parents main_client.cpp mainwindow.cpp client.cpp ../common/data.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1722,6 +1726,9 @@ client.o: client.cpp ../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QDialog \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/QTcpSocket
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o client.o client.cpp
+
+data.o: ../common/data.cpp ../common/data.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o data.o ../common/data.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
