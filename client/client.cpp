@@ -9,32 +9,13 @@ Client::Client(QWidget *parent)
     : QWidget(parent)
     , hostCombo(new QComboBox)
     , portLineEdit(new QLineEdit)
-    , getDataButton(new QPushButton(tr("Get")))
+    , getDataButton(new QPushButton(tr("Get Data")))
     , tcpSocket(new QTcpSocket(this))
 {
     hostCombo->setEditable(true);
-    // find out name of this machine
-    QString name = QHostInfo::localHostName();
-    if (!name.isEmpty()) {
-        hostCombo->addItem(name);
-        QString domain = QHostInfo::localDomainName();
-        if (!domain.isEmpty())
-            hostCombo->addItem(name + QChar('.') + domain);
-    }
-    if (name != QLatin1String("localhost"))
-        hostCombo->addItem(QString("localhost"));
-    // find out IP addresses of this machine
-    QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
-    // add non-localhost addresses
-    for (int i = 0; i < ipAddressesList.size(); ++i) {
-        if (!ipAddressesList.at(i).isLoopback())
-            hostCombo->addItem(ipAddressesList.at(i).toString());
-    }
-    // add localhost addresses
-    for (int i = 0; i < ipAddressesList.size(); ++i) {
-        if (ipAddressesList.at(i).isLoopback())
-            hostCombo->addItem(ipAddressesList.at(i).toString());
-    }
+    hostCombo->addItem(QString("157.26.91.84"));
+
+    statusLabel = new QLabel();
 
     portLineEdit->setValidator(new QIntValidator(1, 65535, this));
 
@@ -42,8 +23,6 @@ Client::Client(QWidget *parent)
     hostLabel->setBuddy(hostCombo);
     auto portLabel = new QLabel(tr("S&erver port:"));
     portLabel->setBuddy(portLineEdit);
-
-    statusLabel = new QLabel(tr("This examples requires that you run the Server example as well."));
 
     getDataButton->setDefault(true);
 
@@ -57,7 +36,7 @@ Client::Client(QWidget *parent)
     connect(portLineEdit, &QLineEdit::textChanged, this, &Client::enableGetDataButton);
     connect(getDataButton, &QAbstractButton::clicked, this, &Client::request);
     connect(tcpSocket, &QIODevice::readyRead, this, &Client::read);
-    connect(tcpSocket, &QAbstractSocket::errorOccurred, this, &Client::displayError);
+    // connect(tcpSocket, &QAbstractSocket::errorOccurred, this, &Client::displayError);
 
     QGridLayout *mainLayout = nullptr;
     if (QGuiApplication::styleHints()->showIsFullScreen() || QGuiApplication::styleHints()->showIsMaximized()) {
@@ -106,10 +85,13 @@ Client::Client(QWidget *parent)
 
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
+
+    mainLayout->addWidget(chartView, 4, 1);
 }
 
 void Client::request()
 {
+    statusLabel->setText("Requesting...");
     tcpSocket->abort();
     tcpSocket->connectToHost(hostCombo->currentText(), portLineEdit->text().toInt());
 }

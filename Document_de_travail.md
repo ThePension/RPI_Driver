@@ -131,7 +131,7 @@ make
 Après avoir copié l'exécutable sur le RPI :
 
 ```shell
-./qt-client -platform vnc -geometry 500x500 -plugin evdevmouse &
+./qt-server -platform vnc -geometry 500x500 -plugin evdevmouse &
 ```
 
 Puis, depuis la machine hôte, se connecter au RPI avec VNC sur le port 5900.

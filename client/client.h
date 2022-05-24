@@ -1,6 +1,7 @@
 #pragma once
 
 // Based on : https://doc.qt.io/qt-5/qtnetwork-fortuneclient-example.html
+// and : https://doc.qt.io/qt-5/qtcharts-barchart-example.html
 
 #include <QDataStream>
 #include <QDialog>

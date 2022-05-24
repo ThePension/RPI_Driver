@@ -2,13 +2,14 @@
 
 // Based on : https://doc.qt.io/qt-5/qtnetwork-fortuneserver-example.html
 
-#include <QtWidgets>
+#include <QtCore>
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
+#include <iostream>
 
 #include "../common/data.h"
 
@@ -16,7 +17,7 @@
 
 class QTcpServer;
 
-class Server : public QWidget
+class Server : public QObject
 {
     Q_OBJECT
 

@@ -1,19 +1,18 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'client.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.8)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.8)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "client.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'client.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.15.8. It"
+#error "This file was generated using the moc from 5.12.8. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -80,7 +79,7 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         auto *_t = static_cast<Client *>(_o);
-        (void)_t;
+        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->request(); break;
         case 1: _t->read(); break;
@@ -103,7 +102,7 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
 }
 
 QT_INIT_METAOBJECT const QMetaObject Client::staticMetaObject = { {
-    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    &QWidget::staticMetaObject,
     qt_meta_stringdata_Client.data,
     qt_meta_data_Client,
     qt_static_metacall,

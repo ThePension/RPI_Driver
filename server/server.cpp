@@ -13,10 +13,7 @@ void Server::initServer()
 {
     this->tcpServer = new QTcpServer(this);
     if (!tcpServer->listen()) {
-        QMessageBox::critical(this, tr("Server"),
-                              tr("Unable to start the server: %1.")
-                              .arg(tcpServer->errorString()));
-        close();
+        qDebug() << "Unable to start the server : " << tcpServer->errorString();
         return;
     }
     QString ipAddress;
@@ -32,9 +29,8 @@ void Server::initServer()
     // if we did not find one, use IPv4 localhost
     if (ipAddress.isEmpty())
         ipAddress = QHostAddress(QHostAddress::LocalHost).toString();
-    status = (tr("The server is running on\n\nIP: %1\nport: %2\n\n"
-                            "Run the Fortune Client example now.")
-                         .arg(ipAddress).arg(tcpServer->serverPort()));
+    qDebug() << "The server is running on";
+    qDebug() << (tr("IP: %1 and port: %2")).arg(ipAddress).arg(tcpServer->serverPort());
 }
 
 void Server::retrieveData()
@@ -43,10 +39,10 @@ void Server::retrieveData()
 
     int ret, fd;
 
-    fd = open("/dev/drvTest", O_RDWR);             // Open the device with read/write access
+    fd = open("/dev/drvI2C", O_RDWR);             // Open the device with read/write access
     if (fd < 0)
     {
-        perror("Failed to open the device...");
+        perror("Failed to open the device...1");
         return;
     }
 
@@ -55,6 +51,8 @@ void Server::retrieveData()
         perror("Failed to read the message from the device.");
         return;
     }
+
+    printf("The received message is: [%s]\n", receive);
 
     // this->data.temperature = receive[]
 }

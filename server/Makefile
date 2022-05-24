@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-gcc
 CXX           = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++
-DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os -g0 --sysroot=/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os -g0 --sysroot=/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I. -I../../../build-pi4/host/mkspecs/devices/linux-buildroot-g++
+INCPATH       = -I. -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I. -I../../../build-pi4/host/mkspecs/devices/linux-buildroot-g++
 QMAKE         = /home/thepension/LinEmb/build-pi4/host/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = qt-server1.0.0
 DISTDIR = /home/thepension/LinEmb/projects/gr9/server/.tmp/qt-server1.0.0
 LINK          = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++
 LFLAGS        = --sysroot=/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wl,-O1
-LIBS          = $(SUBLIBS) -latomic /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Widgets.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Gui.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Network.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Core.so -lpthread  -lrt -lpthread -ldl 
+LIBS          = $(SUBLIBS) -latomic /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Gui.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Network.so /home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/lib/libQt5Core.so -lpthread  -lrt -lpthread -ldl 
 AR            = /home/thepension/LinEmb/build-pi4/host/bin/arm-buildroot-linux-uclibcgnueabihf-ar cqs
 RANLIB        = 
 SED           = sed
@@ -119,7 +119,6 @@ DIST          = ../../../build-pi4/host/mkspecs/features/spec_pre.prf \
 		../../../build-pi4/host/mkspecs/features/resources_functions.prf \
 		../../../build-pi4/host/mkspecs/features/resources.prf \
 		../../../build-pi4/host/mkspecs/features/moc.prf \
-		../../../build-pi4/host/mkspecs/features/uic.prf \
 		../../../build-pi4/host/mkspecs/features/unix/thread.prf \
 		../../../build-pi4/host/mkspecs/features/qmake_use.prf \
 		../../../build-pi4/host/mkspecs/features/file_copies.prf \
@@ -202,7 +201,6 @@ Makefile: qt-server.pro ../../../build-pi4/host/mkspecs/devices/linux-buildroot-
 		../../../build-pi4/host/mkspecs/features/resources_functions.prf \
 		../../../build-pi4/host/mkspecs/features/resources.prf \
 		../../../build-pi4/host/mkspecs/features/moc.prf \
-		../../../build-pi4/host/mkspecs/features/uic.prf \
 		../../../build-pi4/host/mkspecs/features/unix/thread.prf \
 		../../../build-pi4/host/mkspecs/features/qmake_use.prf \
 		../../../build-pi4/host/mkspecs/features/file_copies.prf \
@@ -272,7 +270,6 @@ Makefile: qt-server.pro ../../../build-pi4/host/mkspecs/devices/linux-buildroot-
 ../../../build-pi4/host/mkspecs/features/resources_functions.prf:
 ../../../build-pi4/host/mkspecs/features/resources.prf:
 ../../../build-pi4/host/mkspecs/features/moc.prf:
-../../../build-pi4/host/mkspecs/features/uic.prf:
 ../../../build-pi4/host/mkspecs/features/unix/thread.prf:
 ../../../build-pi4/host/mkspecs/features/qmake_use.prf:
 ../../../build-pi4/host/mkspecs/features/file_copies.prf:
@@ -333,8 +330,6 @@ compiler_moc_header_make_all: moc_server.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_server.cpp
 moc_server.cpp: server.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QtWidgets \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QtWidgetsDepends \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QtCore \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QtCoreDepends \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qglobal.h \
@@ -535,282 +530,16 @@ moc_server.cpp: server.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qwineventnotifier.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qxmlstream.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtcoreversion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QtGui \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QtGuiDepends \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtguiglobal.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtgui-config.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qabstracttextdocumentlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcolor.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrgb.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrgba64.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qevent.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs_win.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qregion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qkeysequence.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvector2d.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtouchdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextformat.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qmatrix.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpolygon.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtransform.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimage.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpaintdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpixelformat.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpixmap.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qglyphrun.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrawfont.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfontdatabase.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextcursor.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextdocument.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpalette.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessible.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessiblebridge.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessibleobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessibleplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qbackingstore.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QEvent \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QMargins \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QRect \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsurface.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsurfaceformat.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qbitmap.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qclipboard.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcolorspace.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcolortransform.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qdesktopservices.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qdrag.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qgenericmatrix.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qgenericplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qgenericpluginfactory.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qguiapplication.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qinputmethod.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qiconengine.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qiconengineplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimageiohandler.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimagereader.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimagewriter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qmatrix4x4.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvector3d.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvector4d.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qquaternion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qmovie.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qoffscreensurface.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengl.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qt_windows.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengles2ext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglbuffer.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglcontext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QScopedPointer \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QSurfaceFormat \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglversionfunctions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengldebug.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglextrafunctions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglfunctions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglframebufferobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglpaintdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglpixeltransferoptions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QSharedDataPointer \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglshaderprogram.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengltexture.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengltextureblitter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QMatrix3x3 \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QMatrix4x4 \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengltimerquery.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglvertexarrayobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QPaintDeviceWindow \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpaintdevicewindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QWindow \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QPaintDevice \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QOpenGLContext \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QImage \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpagedpaintdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpagelayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpagesize.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpaintengine.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpainterpath.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpdfwriter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpicture.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpictureformatplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpixmapcache.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrasterwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qscreen.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QList \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QSize \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QSizeF \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QTransform \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsessionmanager.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qstandarditemmodel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qstatictext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qstylehints.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsyntaxhighlighter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextdocumentfragment.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextdocumentwriter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextlist.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtexttable.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvalidator.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtguiversion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizepolicy.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyleoption.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractspinbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qslider.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractslider.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyle.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtabbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtabwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qrubberband.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractitemview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qaccessiblewidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qaction.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qactiongroup.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qapplication.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdesktopwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qboxlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayoutitem.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgridlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qbuttongroup.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcalendarwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcheckbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcolordialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcolormap.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcolumnview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcombobox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcommandlinkbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qpushbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcommonstyle.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcompleter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdatawidgetmapper.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdatetimeedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdial.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdialogbuttonbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdirmodel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfileiconprovider.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdockwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdrawutil.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qerrormessage.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfiledialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfilesystemmodel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfocusframe.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfontcombobox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfontdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qformlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QLayout \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgesture.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgesturerecognizer.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsanchorlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicslayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicslayoutitem.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicseffect.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsgridlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicslinearlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsproxywidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicswidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicssceneevent.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicstransform.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QVector3D \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgroupbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qheaderview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qinputdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlineedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qitemdelegate.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qitemeditorfactory.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qkeyeventtransition.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlabel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlcdnumber.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlistview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlistwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmainwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmdiarea.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmdisubwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmenu.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmenubar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmessagebox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmouseeventtransition.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qopenglwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qplaintextedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtextedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qprogressbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qprogressdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qproxystyle.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QCommonStyle \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qradiobutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscroller.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QScrollerProperties \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollerproperties.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QMetaType \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QVariant \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qshortcut.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizegrip.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qspinbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsplashscreen.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsplitter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstackedlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstackedwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstatusbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyleditemdelegate.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstylefactory.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstylepainter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyleplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsystemtrayicon.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtableview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtablewidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtextbrowser.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtoolbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtoolbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtoolbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtooltip.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtreeview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtreewidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtreewidgetitemiterator.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qundogroup.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qundostack.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qundoview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwhatsthis.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidgetaction.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwizard.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsversion.h \
+		../common/data.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QDataStream \
 		moc_predefs.h \
 		../../../build-pi4/host/bin/moc
-	/home/thepension/LinEmb/build-pi4/host/bin/moc $(DEFINES) --include /home/thepension/LinEmb/projects/gr9/server/moc_predefs.h -I/home/thepension/LinEmb/build-pi4/host/mkspecs/devices/linux-buildroot-g++ -I/home/thepension/LinEmb/projects/gr9/server -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/arm-buildroot-linux-uclibcgnueabihf -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/backward -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include-fixed -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include server.h -o moc_server.cpp
+	/home/thepension/LinEmb/build-pi4/host/bin/moc $(DEFINES) --include /home/thepension/LinEmb/projects/gr9/server/moc_predefs.h -I/home/thepension/LinEmb/build-pi4/host/mkspecs/devices/linux-buildroot-g++ -I/home/thepension/LinEmb/projects/gr9/server -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0 -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/arm-buildroot-linux-uclibcgnueabihf -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include/c++/10.3.0/backward -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include -I/home/thepension/LinEmb/build-pi4/host/lib/gcc/arm-buildroot-linux-uclibcgnueabihf/10.3.0/include-fixed -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/include -I/home/thepension/LinEmb/build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include server.h -o moc_server.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all:
-compiler_uic_clean:
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -821,10 +550,8 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean
 
 ####### Compile
 
-main_server.o: main_server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QApplication \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qapplication.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtguiglobal.h \
+main_server.o: main_server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QCoreApplication \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcoreapplication.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qglobal.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qconfig-bootstrapped.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qconfig.h \
@@ -846,9 +573,6 @@ main_server.o: main_server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclib
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmutex.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qnumeric.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qversiontagging.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtgui-config.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcoreapplication.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstring.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qchar.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbytearray.h \
@@ -881,63 +605,24 @@ main_server.o: main_server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclib
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcontainerfwd.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobject_impl.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qeventloop.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs_win.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsize.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmargins.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdesktopwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpaintdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qrect.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpalette.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcolor.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrgb.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrgba64.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qmatrix.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpolygon.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qregion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdatastream.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qiodevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qline.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtransform.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimage.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpixelformat.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpixmap.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsharedpointer.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qshareddata.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qhash.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsharedpointer_impl.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizepolicy.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qkeysequence.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qevent.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qvariant.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmap.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdebug.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtextstream.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlocale.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qset.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcontiguouscache.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qurl.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qurlquery.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfile.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfiledevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvector2d.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtouchdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qguiapplication.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qinputmethod.h \
 		server.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QtWidgets \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QtWidgetsDepends \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QtCore \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QtCoreDepends \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstractanimation.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstracteventdispatcher.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qvariant.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmap.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdebug.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qhash.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtextstream.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qiodevice.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlocale.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qshareddata.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qset.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcontiguouscache.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsharedpointer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsharedpointer_impl.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstractnativeeventfilter.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstractproxymodel.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qabstractstate.h \
@@ -956,6 +641,8 @@ main_server.o: main_server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclib
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdatetime.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcborcommon.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qregularexpression.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qurl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qurlquery.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/quuid.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcbormap.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcborstream.h \
@@ -967,10 +654,13 @@ main_server.o: main_server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclib
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcommandlineparser.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qconcatenatetablesproxymodel.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcryptographichash.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdatastream.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdeadlinetimer.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qelapsedtimer.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdir.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfileinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfile.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qfiledevice.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdiriterator.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qeasingcurve.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qendian.h \
@@ -999,9 +689,11 @@ main_server.o: main_server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclib
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlibrary.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlibraryinfo.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qversionnumber.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qline.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlinkedlist.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlockfile.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qloggingcategory.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmargins.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmath.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmessageauthenticationcode.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmetaobject.h \
@@ -1021,6 +713,8 @@ main_server.o: main_server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclib
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qqueue.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qrandom.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qreadwritelock.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qrect.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsize.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qresource.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsavefile.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qscopedvaluerollback.h \
@@ -1058,239 +752,8 @@ main_server.o: main_server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclib
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qwineventnotifier.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qxmlstream.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtcoreversion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QtGui \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QtGuiDepends \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qabstracttextdocumentlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextformat.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qglyphrun.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrawfont.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfontdatabase.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextcursor.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextdocument.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessible.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessiblebridge.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessibleobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessibleplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qbackingstore.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QEvent \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QMargins \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QRect \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsurface.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsurfaceformat.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qbitmap.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qclipboard.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcolorspace.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcolortransform.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qdesktopservices.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qdrag.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qgenericmatrix.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qgenericplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qgenericpluginfactory.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qiconengine.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qiconengineplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimageiohandler.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimagereader.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimagewriter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qmatrix4x4.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvector3d.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvector4d.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qquaternion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qmovie.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qoffscreensurface.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengl.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qt_windows.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengles2ext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglbuffer.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglcontext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QScopedPointer \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QSurfaceFormat \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglversionfunctions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengldebug.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglextrafunctions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglfunctions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglframebufferobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglpaintdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglpixeltransferoptions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QSharedDataPointer \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglshaderprogram.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengltexture.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengltextureblitter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QMatrix3x3 \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QMatrix4x4 \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengltimerquery.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglvertexarrayobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QPaintDeviceWindow \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpaintdevicewindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QWindow \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QPaintDevice \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QOpenGLContext \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QImage \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpagedpaintdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpagelayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpagesize.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpaintengine.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpainterpath.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpdfwriter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpicture.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpictureformatplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpixmapcache.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrasterwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qscreen.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QList \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QSize \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QSizeF \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QTransform \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsessionmanager.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qstandarditemmodel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qstatictext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qstylehints.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsyntaxhighlighter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextdocumentfragment.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextdocumentwriter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextlist.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtexttable.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvalidator.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtguiversion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyleoption.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractspinbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qslider.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractslider.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyle.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtabbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtabwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qrubberband.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractitemview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qaccessiblewidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qaction.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qactiongroup.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qboxlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayoutitem.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgridlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qbuttongroup.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcalendarwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcheckbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcolordialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcolormap.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcolumnview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcombobox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcommandlinkbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qpushbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcommonstyle.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcompleter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdatawidgetmapper.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdatetimeedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdial.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdialogbuttonbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdirmodel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfileiconprovider.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdockwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdrawutil.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qerrormessage.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfiledialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfilesystemmodel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfocusframe.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfontcombobox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfontdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qformlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QLayout \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgesture.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgesturerecognizer.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsanchorlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicslayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicslayoutitem.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicseffect.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsgridlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicslinearlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsproxywidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicswidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicssceneevent.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicstransform.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QVector3D \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgroupbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qheaderview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qinputdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlineedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qitemdelegate.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qitemeditorfactory.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qkeyeventtransition.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlabel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlcdnumber.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlistview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlistwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmainwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmdiarea.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmdisubwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmenu.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmenubar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmessagebox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmouseeventtransition.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qopenglwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qplaintextedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtextedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qprogressbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qprogressdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qproxystyle.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QCommonStyle \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qradiobutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscroller.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QScrollerProperties \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollerproperties.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QMetaType \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QVariant \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qshortcut.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizegrip.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qspinbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsplashscreen.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsplitter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstackedlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstackedwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstatusbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyleditemdelegate.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstylefactory.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstylepainter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyleplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsystemtrayicon.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtableview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtablewidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtextbrowser.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtoolbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtoolbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtoolbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtooltip.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtreeview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtreewidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtreewidgetitemiterator.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qundogroup.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qundostack.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qundoview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwhatsthis.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidgetaction.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwizard.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsversion.h
+		../common/data.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QDataStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_server.o main_server.cpp
 
 server.o: server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/QtNetwork \
@@ -1557,273 +1020,66 @@ server.o: server.cpp ../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qudpsocket.h \
 		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork/qtnetworkversion.h \
 		server.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QtWidgets \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QtWidgetsDepends \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QtGui \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QtGuiDepends \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtguiglobal.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtgui-config.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qabstracttextdocumentlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcolor.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrgb.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrgba64.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qevent.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qwindowdefs_win.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qregion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qkeysequence.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvector2d.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtouchdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextformat.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfont.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpen.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qbrush.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qmatrix.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpolygon.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtransform.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimage.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpaintdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpixelformat.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpixmap.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextoption.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qglyphrun.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrawfont.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfontdatabase.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextcursor.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextdocument.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpalette.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessible.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessiblebridge.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessibleobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qaccessibleplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qbackingstore.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QEvent \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QMargins \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QRect \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsurface.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsurfaceformat.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qicon.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcursor.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qbitmap.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qclipboard.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcolorspace.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qcolortransform.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qdesktopservices.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qdrag.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfontinfo.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qfontmetrics.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qgenericmatrix.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qgenericplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qgenericpluginfactory.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qguiapplication.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qinputmethod.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qiconengine.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qiconengineplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimageiohandler.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimagereader.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qimagewriter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qmatrix4x4.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvector3d.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvector4d.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qquaternion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qmovie.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qoffscreensurface.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengl.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qt_windows.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengles2ext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglbuffer.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglcontext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QScopedPointer \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QSurfaceFormat \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglversionfunctions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengldebug.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglextrafunctions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglfunctions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglframebufferobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglpaintdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglpixeltransferoptions.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglshaderprogram.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengltexture.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengltextureblitter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QMatrix3x3 \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QMatrix4x4 \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopengltimerquery.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglvertexarrayobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qopenglwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QPaintDeviceWindow \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpaintdevicewindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QWindow \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QPaintDevice \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QOpenGLContext \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QImage \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpagedpaintdevice.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpagelayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpagesize.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpaintengine.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpainter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpainterpath.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpdfwriter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpicture.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpictureformatplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qpixmapcache.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qrasterwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qscreen.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QSize \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QSizeF \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QTransform \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsessionmanager.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qstandarditemmodel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qstatictext.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qstylehints.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qsyntaxhighlighter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextobject.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextdocumentfragment.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextdocumentwriter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtextlist.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtexttable.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qvalidator.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/qtguiversion.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsglobal.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgets-config.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizepolicy.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyleoption.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractspinbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qslider.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractslider.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyle.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtabbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtabwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qrubberband.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qframe.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractitemview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qaccessiblewidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qaction.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qactiongroup.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qapplication.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdesktopwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qboxlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlayoutitem.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgridlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qbuttongroup.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcalendarwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcheckbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcolordialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcolormap.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcolumnview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcombobox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcommandlinkbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qpushbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcommonstyle.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qcompleter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdatawidgetmapper.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdatetimeedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdial.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdialogbuttonbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdirmodel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfileiconprovider.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdockwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qdrawutil.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qerrormessage.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfiledialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfilesystemmodel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfocusframe.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfontcombobox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qfontdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qformlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QLayout \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgesture.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgesturerecognizer.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsanchorlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitem.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicslayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicslayoutitem.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicseffect.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsgridlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsitemanimation.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicslinearlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsproxywidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicswidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicssceneevent.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicstransform.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui/QVector3D \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollarea.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qgroupbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qheaderview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qinputdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlineedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qitemdelegate.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qitemeditorfactory.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qkeyeventtransition.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qkeysequenceedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlabel.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlcdnumber.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlistview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qlistwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmainwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmdiarea.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmdisubwindow.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmenu.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmenubar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmessagebox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qmouseeventtransition.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qopenglwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QWidget \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qplaintextedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtextedit.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qprogressbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qprogressdialog.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qproxystyle.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QCommonStyle \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qradiobutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscroller.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QPointF \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/QScrollerProperties \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qscrollerproperties.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qshortcut.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsizegrip.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qspinbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsplashscreen.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsplitter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstackedlayout.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstackedwidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstatusbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyleditemdelegate.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstylefactory.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstylepainter.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qstyleplugin.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qsystemtrayicon.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtableview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtablewidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtextbrowser.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtoolbar.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtoolbox.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtoolbutton.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtooltip.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtreeview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtreewidget.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtreewidgetitemiterator.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qundogroup.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qundostack.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qundoview.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwhatsthis.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwidgetaction.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qwizard.h \
-		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtWidgets/qtwidgetsversion.h
+		../common/data.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QDataStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o server.o server.cpp
 
-data.o: ../common/data.cpp ../common/data.h
+data.o: ../common/data.cpp ../common/data.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/QDataStream \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qdatastream.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qscopedpointer.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qglobal.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qconfig-bootstrapped.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qconfig.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtcore-config.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsystemdetection.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qprocessordetection.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcompilerdetection.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qtypeinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qsysinfo.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlogging.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qflags.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbasicatomic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic_bootstrap.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qgenericatomic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic_cxx11.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qatomic_msvc.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qglobalstatic.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmutex.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qnumeric.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qversiontagging.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qiodevice.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobject.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobjectdefs.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qnamespace.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobjectdefs_impl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstring.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qchar.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbytearray.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qrefcount.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qarraydata.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringliteral.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringalgorithms.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringview.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringbuilder.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qlist.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qalgorithms.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qiterator.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qhashfunctions.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qpair.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qvector.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcontainertools_impl.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qpoint.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qbytearraylist.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringlist.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qregexp.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qstringmatcher.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcoreevent.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qmetatype.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qvarlengtharray.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qcontainerfwd.h \
+		../../../build-pi4/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore/qobject_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o data.o ../common/data.cpp
 
 moc_server.o: moc_server.cpp 
