@@ -59,7 +59,7 @@ void Server::retrieveData()
         int head = 0;
         std::string num = "";
 
-        while(receive[head] != ',')
+        while(receive[head] != ',' && head < BUFFER_LENGTH)
         {
             num += receive[head++];
             this->datas[i].luminosity = stoi(num);
@@ -67,7 +67,7 @@ void Server::retrieveData()
 
         head++;
 
-        while(receive[head] != ',')
+        while(receive[head] != ',' && head < BUFFER_LENGTH)
         {
             num += receive[head++];
             this->datas[i].red = stoi(num);
@@ -75,7 +75,7 @@ void Server::retrieveData()
 
         head++;
 
-        while(receive[head] != ',')
+        while(receive[head] != ',' && head < BUFFER_LENGTH)
         {
             num += receive[head++];
             this->datas[i].blue = stoi(num);
@@ -83,7 +83,7 @@ void Server::retrieveData()
 
         head++;
 
-        while(receive[head] != ';')
+        while(receive[head] != ';' && head < BUFFER_LENGTH)
         {
             num += receive[head++];
             this->datas[i].green = stoi(num);
