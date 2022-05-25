@@ -13,8 +13,8 @@
 
 #include "../common/data.h"
 
-#define BUFFER_LENGTH 256 // The buffer length
-#define DATA_NUMBER 100 
+#define DATA_NUMBER 100
+#define BUFFER_LENGTH (4 * DATA_NUMBER + 1) // The buffer length
 
 class QTcpServer;
 

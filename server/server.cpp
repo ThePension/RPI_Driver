@@ -54,14 +54,43 @@ void Server::retrieveData()
 
     printf("The received message is: [%s]\n", receive);
 
-    // this->data.temperature = receive[]
-     for(int i = 0; i < DATA_NUMBER; i++)
-     {
-        this->datas[i].luminosity = 1;
-        this->datas[i].red = 2;
-        this->datas[i].blue = 3;
-        this->datas[i].green = 4;
-     }
+    for(int i = 0; i < DATA_NUMBER; i++)
+    {
+        int head = 0;
+        std::string num = "";
+
+        while(receive[head] != ',')
+        {
+            num += receive[head++];
+            this->datas[i].luminosity = stoi(num);
+        }
+
+        head++;
+
+        while(receive[head] != ',')
+        {
+            num += receive[head++];
+            this->datas[i].red = stoi(num);
+        }
+
+        head++;
+
+        while(receive[head] != ',')
+        {
+            num += receive[head++];
+            this->datas[i].blue = stoi(num);
+        }
+
+        head++;
+
+        while(receive[head] != ';')
+        {
+            num += receive[head++];
+            this->datas[i].green = stoi(num);
+        }
+
+        head++;
+    }
 }
 
 void Server::send()
