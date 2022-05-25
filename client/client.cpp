@@ -15,6 +15,9 @@ Client::Client(QWidget *parent)
     hostCombo->setEditable(true);
     hostCombo->addItem(QString("157.26.91.84"));
 
+    refreshGraphButton = new QPushButton(tr("Generate random data"));
+    connect(refreshGraphButton, &QPushButton::clicked, this, &Client::generateRandomData);
+
     statusLabel = new QLabel();
 
     portLineEdit->setValidator(new QIntValidator(1, 65535, this));
@@ -36,7 +39,6 @@ Client::Client(QWidget *parent)
     connect(portLineEdit, &QLineEdit::textChanged, this, &Client::enableGetDataButton);
     connect(getDataButton, &QAbstractButton::clicked, this, &Client::request);
     connect(tcpSocket, &QIODevice::readyRead, this, &Client::read);
-    // connect(tcpSocket, &QAbstractSocket::errorOccurred, this, &Client::displayError);
 
     QGridLayout *mainLayout = nullptr;
     if (QGuiApplication::styleHints()->showIsFullScreen() || QGuiApplication::styleHints()->showIsMaximized()) {
@@ -59,27 +61,25 @@ Client::Client(QWidget *parent)
     mainLayout->addWidget(portLineEdit, 1, 1);
     mainLayout->addWidget(statusLabel, 2, 0, 1, 2);
     mainLayout->addWidget(buttonBox, 3, 0, 1, 2);
+    mainLayout->addWidget(refreshGraphButton);
 
     setWindowTitle(QGuiApplication::applicationDisplayName());
     portLineEdit->setFocus();
 
-    setLuminosity = new QBarSet("Luminosity");
-    setRed = new QBarSet("Red");
-    setBlue = new QBarSet("Blue");
-    setGreen = new QBarSet("Green");
-
-    series = new QBarSeries();
-
-    series->append(setLuminosity);
-    series->append(setRed);
-    series->append(setBlue);
-    series->append(setGreen);
+    setLuminosity = new QLineSeries();
+    setRed = new QLineSeries();
+    setBlue = new QLineSeries();
+    setGreen = new QLineSeries();
 
     chart = new QChart();
+    chart->legend()->hide();
+    chart->createDefaultAxes();
 
-    chart->addSeries(series);
-    chart->setTitle("Simple barchart example");
-    chart->setAnimationOptions(QChart::SeriesAnimations);
+    chart->addSeries(setLuminosity);
+    chart->addSeries(setRed);
+    chart->addSeries(setBlue);
+    chart->addSeries(setGreen);
+    chart->setTitle("Simple line chart example");
 
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
@@ -95,6 +95,8 @@ void Client::request()
 
 void Client::read()
 {
+    resetSeries();
+
     getDataButton->setEnabled(false);
 
     in.startTransaction();
@@ -109,35 +111,10 @@ void Client::read()
     if (!in.commitTransaction())
         return;
 
-    statusLabel->setText("Datas received" + QString::number(datas[0].red));
+    statusLabel->setText("Datas received");
     getDataButton->setEnabled(true);
 
     displayData();
-}
-
-void Client::displayError(QAbstractSocket::SocketError socketError)
-{
-    switch (socketError) {
-        case QAbstractSocket::RemoteHostClosedError:
-            break;
-        case QAbstractSocket::HostNotFoundError:
-            QMessageBox::information(this, 
-                                    tr("Client"),
-                                    tr("The host was not found. Please check the host name and port settings."));
-            break;
-        case QAbstractSocket::ConnectionRefusedError:
-            QMessageBox::information(this, 
-                                    tr("Client"),
-                                    tr("The connection was refused by the peer. Make sure the server is running, and check that the host name and port settings are correct."));
-            break;
-        default:
-            QMessageBox::information(this, 
-                                    tr("Client"),
-                                    tr("The following error occurred: %1.")
-                                        .arg(tcpSocket->errorString()));
-    }
-
-    getDataButton->setEnabled(true);
 }
 
 void Client::enableGetDataButton()
@@ -147,16 +124,49 @@ void Client::enableGetDataButton()
 
 }
 
+void Client::generateRandomData()
+{
+    resetSeries();
+
+    for(int i = 0; i < DATA_NUMBER; i++)
+    {
+        datas[i].luminosity = QRandomGenerator::global()->generateDouble() * 255;
+        datas[i].red = QRandomGenerator::global()->generateDouble() * 255;
+        datas[i].blue = QRandomGenerator::global()->generateDouble() * 255;
+        datas[i].green = QRandomGenerator::global()->generateDouble() * 255;
+    }
+
+    displayData();
+}
+
 void Client::displayData()
 {
     for(int i = 0; i < DATA_NUMBER; i++)
     {
-        *setLuminosity << datas[i].luminosity;
-        *setRed << datas[i].red;
-        *setBlue << datas[i].blue;
-        *setGreen << datas[i].green;
+        *setLuminosity << QPointF(i, datas[i].luminosity);
+        *setRed << QPointF(i, datas[i].red);
+        *setBlue << QPointF(i, datas[i].blue);
+        *setGreen << QPointF(i, datas[i].green);
     }
-    this->update();
-    chart->update();
+    
+    chart->removeSeries(setLuminosity);
+    chart->addSeries(setLuminosity); 
+    chart->removeSeries(setRed);
+    chart->addSeries(setRed); 
+    chart->removeSeries(setBlue);
+    chart->addSeries(setBlue); 
+    chart->removeSeries(setGreen);
+    chart->addSeries(setGreen); 
+
     chartView->update();
+    chartView->repaint();
+    this->update();
+}
+
+void Client::resetSeries()
+{
+    setLuminosity->clear();
+    setRed->clear();
+    setBlue->clear();
+    setGreen->clear();
 }

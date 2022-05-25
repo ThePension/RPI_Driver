@@ -10,7 +10,7 @@
 
 #include "../common/data.h"
 
-#define DATA_NUMBER 100 
+#define DATA_NUMBER 100
 
 class QComboBox;
 class QLabel;
@@ -25,32 +25,31 @@ class Client : public QWidget
 public:
     explicit Client(QWidget *parent = nullptr);
 
-private slots:
+public slots:
     void request();
     void read();
-    void displayError(QAbstractSocket::SocketError socketError);
     void enableGetDataButton();
+    void generateRandomData();
+    void displayData();
+    void resetSeries();
 
 private:
     QComboBox *hostCombo = nullptr;
     QLineEdit *portLineEdit = nullptr;
     QLabel *statusLabel = nullptr;
     QPushButton *getDataButton = nullptr;
+    QPushButton *refreshGraphButton = nullptr;
 
     QTcpSocket *tcpSocket = nullptr;
     QDataStream in;
     Data datas[DATA_NUMBER];
 
-    QBarSet *setLuminosity = nullptr;
-    QBarSet *setRed = nullptr;
-    QBarSet *setBlue = nullptr;
-    QBarSet *setGreen = nullptr;
-
-    QBarSeries *series = nullptr;
+    QLineSeries *setLuminosity = nullptr;
+    QLineSeries *setRed = nullptr;
+    QLineSeries *setBlue = nullptr;
+    QLineSeries *setGreen = nullptr;
 
     QChart *chart = nullptr;
 
     QChartView *chartView;
-
-    void displayData();
 };

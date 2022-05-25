@@ -8,5 +8,3 @@ SOURCES += main_client.cpp \
 HEADERS += mainwindow.h \
             client.h \
             ../common/data.h
-          
-
