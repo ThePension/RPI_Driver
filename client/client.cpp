@@ -16,6 +16,8 @@ Client::Client(QWidget *parent)
     hostCombo->addItem(QString("157.26.91.84"));
 
     refreshGraphButton = new QPushButton(tr("Generate random data"));
+    startGettingDataButton = new QPushButton(tr("Start getting data"));
+
     connect(refreshGraphButton, &QPushButton::clicked, this, &Client::generateRandomData);
 
     statusLabel = new QLabel();
@@ -39,9 +41,11 @@ Client::Client(QWidget *parent)
     connect(portLineEdit, &QLineEdit::textChanged, this, &Client::enableGetDataButton);
     connect(getDataButton, &QAbstractButton::clicked, this, &Client::request);
     connect(tcpSocket, &QIODevice::readyRead, this, &Client::read);
+    connect(startGettingDataButton, &QPushButton::clicked, this, &Client::startGettingData);
 
     QGridLayout *mainLayout = nullptr;
-    if (QGuiApplication::styleHints()->showIsFullScreen() || QGuiApplication::styleHints()->showIsMaximized()) {
+    if (QGuiApplication::styleHints()->showIsFullScreen() || QGuiApplication::styleHints()->showIsMaximized()) 
+    {
         auto outerVerticalLayout = new QVBoxLayout(this);
         outerVerticalLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::Ignored, QSizePolicy::MinimumExpanding));
         auto outerHorizontalLayout = new QHBoxLayout;
@@ -52,7 +56,9 @@ Client::Client(QWidget *parent)
         outerHorizontalLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::MinimumExpanding, QSizePolicy::Ignored));
         outerVerticalLayout->addLayout(outerHorizontalLayout);
         outerVerticalLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::Ignored, QSizePolicy::MinimumExpanding));
-    } else {
+    } 
+    else 
+    {
         mainLayout = new QGridLayout(this);
     }
     mainLayout->addWidget(hostLabel, 0, 0);
@@ -61,7 +67,7 @@ Client::Client(QWidget *parent)
     mainLayout->addWidget(portLineEdit, 1, 1);
     mainLayout->addWidget(statusLabel, 2, 0, 1, 2);
     mainLayout->addWidget(buttonBox, 3, 0, 1, 2);
-    mainLayout->addWidget(refreshGraphButton);
+    mainLayout->addWidget(startGettingDataButton, 4, 0);
 
     setWindowTitle(QGuiApplication::applicationDisplayName());
     portLineEdit->setFocus();
@@ -71,9 +77,12 @@ Client::Client(QWidget *parent)
     setBlue = new QLineSeries();
     setGreen = new QLineSeries();
 
+    QValueAxis *axisY = new QValueAxis();
+    axisY->setRange(0, 255);
+    axisY->setTickCount(10);
+    axisY->setLabelFormat("%.2f");
+
     chart = new QChart();
-    chart->legend()->hide();
-    chart->createDefaultAxes();
 
     chart->addSeries(setLuminosity);
     chart->addSeries(setRed);
@@ -83,6 +92,7 @@ Client::Client(QWidget *parent)
 
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->chart()->setAxisY(axisY, setLuminosity);
 
     mainLayout->addWidget(chartView, 4, 1);
 }
@@ -91,6 +101,15 @@ void Client::request()
 {
     tcpSocket->abort();
     tcpSocket->connectToHost(hostCombo->currentText(), portLineEdit->text().toInt());
+}
+
+void Client::startGettingData()
+{
+    /*while(true)
+    {
+        this->request();
+        sleep(500);
+    }*/
 }
 
 void Client::read()
@@ -108,8 +127,7 @@ void Client::read()
         datas[i] = nextData;
     }   
 
-    if (!in.commitTransaction())
-        return;
+    if (!in.commitTransaction()) return;
 
     statusLabel->setText("Datas received");
     getDataButton->setEnabled(true);

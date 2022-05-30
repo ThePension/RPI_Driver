@@ -12,89 +12,117 @@ Server::Server()
 void Server::initServer()
 {
     this->tcpServer = new QTcpServer(this);
-    if (!tcpServer->listen()) {
+
+    if (!tcpServer->listen()) 
+    {
         qDebug() << "Unable to start the server : " << tcpServer->errorString();
         return;
     }
+
     QString ipAddress;
     QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
+
     // use the first non-localhost IPv4 address
-    for (int i = 0; i < ipAddressesList.size(); ++i) {
+    for (int i = 0; i < ipAddressesList.size(); ++i) 
+    {
         if (ipAddressesList.at(i) != QHostAddress::LocalHost &&
-            ipAddressesList.at(i).toIPv4Address()) {
+            ipAddressesList.at(i).toIPv4Address()) 
+        {
             ipAddress = ipAddressesList.at(i).toString();
             break;
         }
     }
+
     // if we did not find one, use IPv4 localhost
-    if (ipAddress.isEmpty())
-        ipAddress = QHostAddress(QHostAddress::LocalHost).toString();
-    qDebug() << "The server is running on";
-    qDebug() << (tr("IP: %1 and port: %2")).arg(ipAddress).arg(tcpServer->serverPort());
+    if (ipAddress.isEmpty()) ipAddress = QHostAddress(QHostAddress::LocalHost).toString();
+
+    qDebug() << "The server is running on " << (tr("IP: %1 and port: %2")).arg(ipAddress).arg(tcpServer->serverPort());
 }
 
 void Server::retrieveData()
 {
-    char receive[BUFFER_LENGTH];     // The receive buffer from the driver
+    char receiveChar[BUFFER_LENGTH]; // The receive buffer from the driver
+
+    int * receiveInt = new int[DATA_NUMBER * 4];
+    receiveInt = (int*)receiveChar;
 
     int ret, fd;
 
-    fd = open("/dev/drvI2C", O_RDWR);             // Open the device with read/write access
+    try
+    {
+        fd = open("/dev/drvI2C", O_RDWR); // Open the device with read/write access
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        return;
+    }
+
     if (fd < 0)
     {
         perror("Failed to open the device...");
         return;
     }
 
-    ret = read(fd, receive, BUFFER_LENGTH);        // Read the response from the driver
-    if (ret < 0){
+    try
+    {
+        ret = read(fd, receiveChar, BUFFER_LENGTH); // Read the response from the driver
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        return;
+    }
+
+    if (ret < 0)
+    {
         perror("Failed to read the message from the device.");
         return;
     }
 
-    printf("The received message is: [%s]\n", receive);
-
-    for(int i = 0; i < DATA_NUMBER; i++)
+    printf("The received message is: \n");
+    /*for(int i = 0; i < 400; i++)
     {
-        int head = 0;
-        std::string num = "";
+        printf("%d : %d\n", i, receiveInt[i]);
+    }*/
 
-        while(receive[head] != ',' && head < BUFFER_LENGTH)
+    for(int i = 0, y = 0; i < DATA_NUMBER * 4; i += 4, y++)
+    {
+        try
         {
-            num += receive[head++];
-            this->datas[i].luminosity = stoi(num);
+            this->datas[y].luminosity = receiveInt[i];
+            this->datas[y].red = receiveInt[i + 1];
+            this->datas[y].green = receiveInt[i + 2];
+            this->datas[y].blue = receiveInt[i + 3];
         }
-
-        head++;
-
-        while(receive[head] != ',' && head < BUFFER_LENGTH)
+        catch(const std::exception& e)
         {
-            num += receive[head++];
-            this->datas[i].red = stoi(num);
+            std::cerr << e.what() << '\n';
         }
-
-        head++;
-
-        while(receive[head] != ',' && head < BUFFER_LENGTH)
-        {
-            num += receive[head++];
-            this->datas[i].blue = stoi(num);
-        }
-
-        head++;
-
-        while(receive[head] != ';' && head < BUFFER_LENGTH)
-        {
-            num += receive[head++];
-            this->datas[i].green = stoi(num);
-        }
-
-        head++;
     }
+
+    close(fd);
+}
+
+int Server::convertToInt(std::string str)
+{
+    int num = 0;
+    try
+    {
+        num = std::stoi(str);
+    }
+    catch(const std::exception& e)
+    {
+        qDebug() << "Impossible to convert the string : '" << QString::fromStdString(str) << "' to int";
+        num = 255; 
+    }
+    return num;
 }
 
 void Server::send()
 {
+    retrieveData();
+
     QByteArray block;
     QDataStream out(&block, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_10);

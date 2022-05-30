@@ -48,7 +48,7 @@ EOF
 ```shell
 cd ~/LinEmb/pi4-config/
 
-# le fichier Config.in est déjas crée avec labo5.d
+# le fichier Config.in est déja créé avec labo5.d
 sed -i '$ i\source "$BR2_EXTERNAL_PI4_CONFIG_PATH/package/drvTest/Config.in"' Config.in
 
 ```
@@ -126,6 +126,10 @@ Ensuite, pour compiler, entrer la commande
 make
 ```
 
+Une fois cela fait, nous avons créé et implémenter deux projets :
+- Un serveur, qui envoie des données (simulées pour l'instant) sur le réseau en cas de requête
+- Un client, qui récupère les données demandées et les affiche sous forme de graphe
+
 ## Lancer une application Qt GUI avec VNC
 
 Après avoir copié l'exécutable sur le RPI :
@@ -142,6 +146,7 @@ Puis, depuis la machine hôte, se connecter au RPI avec VNC sur le port 5900.
 sudo apt-get install qt5-qmake
 sudo apt-get install qt5-default
 sudo apt-get install libqt5charts5-dev
+sudo apt-get install qtbase5-dev-tools
 ```
 
 Regénérer le <i>Makefile</i> avec <i>qmake<i> :
@@ -167,3 +172,9 @@ modprobe i2c-bcm2835
 modprobe i2c-dev
 modprobe drvI2C
 
+# 30.05.2022
+
+Modification du serveur :
+- Récupérer les données du driver au lieu de les simuler
+- Améliorer l'interface graphique du client
+- Résoudre les potentielles erreurs

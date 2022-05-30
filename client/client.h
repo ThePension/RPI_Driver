@@ -7,6 +7,7 @@
 #include <QDialog>
 #include <QTcpSocket>
 #include <QtCharts>
+#include <unistd.h>
 
 #include "../common/data.h"
 
@@ -32,6 +33,7 @@ public slots:
     void generateRandomData();
     void displayData();
     void resetSeries();
+    void startGettingData();
 
 private:
     QComboBox *hostCombo = nullptr;
@@ -39,6 +41,7 @@ private:
     QLabel *statusLabel = nullptr;
     QPushButton *getDataButton = nullptr;
     QPushButton *refreshGraphButton = nullptr;
+    QPushButton * startGettingDataButton = nullptr;
 
     QTcpSocket *tcpSocket = nullptr;
     QDataStream in;

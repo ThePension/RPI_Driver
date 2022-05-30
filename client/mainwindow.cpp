@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     setCentralWidget(this->client);
 
     setWindowTitle("LinEmb");
-    resize(600, 400);
+    resize(1000, 600);
 
     createMenusActions();
 }

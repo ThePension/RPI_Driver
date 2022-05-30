@@ -1,6 +1,6 @@
 /**
  * @file   main.cpp
- * @author Lucas Gosteli et eNicolas Aubert
+ * @author Lucas Gosteli et Nicolas Aubert
  * @date   24.05.2022
  * @version 0.1
  * @brief  A Linux user space program that communicates with the driver.

@@ -14,7 +14,7 @@
 #include "../common/data.h"
 
 #define DATA_NUMBER 100
-#define BUFFER_LENGTH (4 * DATA_NUMBER + 1) // The buffer length
+#define BUFFER_LENGTH 1600 // The buffer length
 
 class QTcpServer;
 
@@ -31,6 +31,7 @@ private slots:
 
 private:
     void initServer();
+    int convertToInt(std::string);
 
     Data datas[DATA_NUMBER];
     QString status = nullptr;
