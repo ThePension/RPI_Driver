@@ -1,11 +1,11 @@
-/***************************************************************************/ /**
-                                                                               *  \file       drvI2C.c
-                                                                               *
-                                                                               *  \details    Driver whom read date from the SenHat
-                                                                               *
-                                                                               *  \author     Aubert, Gosteli
-                                                                               *
-                                                                               * *******************************************************************************/
+/****************************************************************************
+*  \file       drvI2C.c
+*
+*  \details    Driver whom read date from the SenHat
+*
+*  \author     Aubert, Gosteli
+*
+* ***************************************************************************/
 
 #include <linux/module.h>      /* Needed by all modules 					*/
 #include <linux/kernel.h>      /* Needed for KERN_INFO 						*/
@@ -28,13 +28,12 @@
 #define TCS_SLAVE_ADDR (0x29)          // TCS34725 Slave Address
 
 static int majorNumber;                    /* Device number -- determined automatically			*/
-static char message[256] = {0};            /* Memory for the string that is passed from userspace	*/
 static short size_of_msg;                  /* Used to remember the size of the string stored		*/
 static int nbrOpens = 0;                   /* Counts the number of times the device is opened		*/
 static struct class *devI2CClass = NULL;   /* The device-driver class struct pointer				*/
 static struct device *devI2CDevice = NULL; /* The device-driver device struct pointer				*/
 
-static char data[400] = {-1}; // format i,r,g,b
+static int data[400] = {-1}; // format i,r,g,b
 
 static struct i2c_adapter *tcs_i2c_adapter = NULL; // I2C Adapter Structure
 static struct i2c_client *tcs_i2c_client = NULL;   // I2C Cient Structure
@@ -49,7 +48,7 @@ static ssize_t dev_write(struct file *, const char *, size_t, loff_t *);
 static void TCS_Write(unsigned char *data);
 static void TCS_Read(unsigned char *out_data);
 static int TCS_init(void);
-static void TCS_Convert_IRGB(char data[8], char *out_buff);
+static void TCS_Convert_IRGB(char data[8], int *out_buff);
 static int tcs_probe(struct i2c_client *client, const struct i2c_device_id *id);
 static int tcs_remove(struct i2c_client *client);
 
@@ -79,10 +78,8 @@ static int kthread_func2(void *arg)
     {
         char dt[8];
         TCS_Read(dt);
-        char irgbdata[4] = {0};
+        int irgbdata[4] = {-1};
         TCS_Convert_IRGB(dt, irgbdata);
-
-        pr_info("i %c",irgbdata[0]);
 
         int j = 0;
         while (j < 4)
@@ -90,12 +87,12 @@ static int kthread_func2(void *arg)
             data[i++] = irgbdata[j++];
         }
 
-        if (i > max)
+        if (i >= max)
         {
             i = 0;
         }
 
-        msleep(2000);
+        msleep(500);
     }
 
     return 0;
@@ -142,12 +139,14 @@ static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *of
 {
     int error_count = 0;
     // copy_to_user has the format ( * to, *from, size) and returns 0 on success
-    error_count = copy_to_user(buffer, data, 400);
+    
 
+    error_count = copy_to_user(buffer, (char*)data, sizeof(int)*400);
+    
     if (error_count == 0)
     { // if true then have success
-        pr_info("devI2C: Sent %d characters to the user\n", size_of_msg);
-        return (size_of_msg = 0); // clear the position to the start and return 0
+        pr_info("devI2C: Sent %d characters to the user\n", sizeof(buffer)/sizeof(char));
+        return 0; // clear the position to the start and return 0
     }
     else
     {
@@ -302,7 +301,7 @@ static int TCS_init(void)
     msleep(10);
 
     TCS_Read(data);
-    char irgbdata[4] = {0};
+    int irgbdata[4] = {0};
     TCS_Convert_IRGB(data, irgbdata);
 
     // Output data to screen
@@ -317,12 +316,12 @@ static int TCS_init(void)
 *** @brief This Function convert TCS data to match standard IRGB value
 ***
 **/
-static void TCS_Convert_IRGB(char data[8], char *out_buff)
+static void TCS_Convert_IRGB(char data[8], int *out_buff)
 {
-    out_buff[0] = (data[1] * 256 + data[0])+'0';
-    out_buff[1] = (data[3] * 256 + data[2])+'0';
-    out_buff[2] = (data[5] * 256 + data[4])+'0';
-    out_buff[3] = (data[7] * 256 + data[6])+'0';
+    out_buff[0] = (data[1] * 256 + data[0]);
+    out_buff[1] = (data[3] * 256 + data[2]);
+    out_buff[2] = (data[5] * 256 + data[4]);
+    out_buff[3] = (data[7] * 256 + data[6]);
 }
 
 /*
@@ -423,6 +422,8 @@ static int __init tcs_driver_init(void)
     }
     TCS_init();
     pr_info("Driver Added !!\n");
+
+    msleep(100); // delay
 
     int err;
     ts1 = kthread_run(kthread_func2, NULL, "thread-1");
