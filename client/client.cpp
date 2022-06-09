@@ -96,8 +96,8 @@ void Client::run(std::string msg)
 {
     while(this->isRunning)
     {
-        // this->request();
-        this->generateRandomData();
+        this->request();
+        // this->generateRandomData();
         sleep(1);
     }
 }

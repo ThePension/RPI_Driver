@@ -130,6 +130,20 @@ Une fois cela fait, nous avons créé et implémenter deux projets :
 - Un serveur, qui envoie des données (simulées pour l'instant) sur le réseau en cas de requête
 - Un client, qui récupère les données demandées et les affiche sous forme de graphe
 
+Ces implémentations se basent grandement sur les exemples de server/client disponibles sur la documentation de Qt.
+
+Server : https://doc.qt.io/qt-6/qtnetwork-fortuneserver-example.html
+
+Client : https://doc.qt.io/qt-6/qtnetwork-fortuneclient-example.html
+
+Comme notre driver récupère les données de couleur, nous avons créée une classe, nommée 'Data', possédant les attributs suivants :
+- luminosity
+- red
+- blue
+- green
+
+Nous avons rendu cette classe sérialisable, afin de pouvoir la transmettre sur le réseau.
+
 ## Lancer une application Qt GUI avec VNC
 
 Après avoir copié l'exécutable sur le RPI :
@@ -164,7 +178,7 @@ make
 
 ## ajouter le driver dans l'image
 
-refaire les memes étapes pour ajouter le driver à l'image que le driverTest.
+Refaire les mêmes étapes qu'avec le driverTest pour ajouter le driver à l'image .
 
 ### charger i2c
 
@@ -178,3 +192,24 @@ Modification du serveur :
 - Récupérer les données du driver au lieu de les simuler
 - Améliorer l'interface graphique du client
 - Résoudre les potentielles erreurs
+
+# 09.05.2022
+
+Modification du client :
+- Ajout d'un thread qui récupère les données dans une boucle infinie, pour ne pas bloquer l'interface graphique
+- Ajout d'un bouton "stop" pour arrêter le thread
+- Aide de différents groupes (surtout Alessio Comi et Jeanne Michel)
+
+# Conclusion
+
+Notre driver permet de récupérer les données de couleur (luminosité, rouge, bleu, vert).
+
+A chaque fois que notre serveur est interrogé, il récupère ces données, les stocke dans un buffer circulaire de taille 100, puis les envoie (le buffer entier) à la personne ayant effectué la requête.
+
+Notre client, dans un thread séparé, interroge le serveur toutes les secondes, et affiche les données récupérées dans un graphique.
+
+Tous nos codes sources se trouvent sur GitLab, à l'adresse suivante : https://gitlab-etu.ing.he-arc.ch/isc/2021-22/niveau-2/2247.1-linux-emb-il/gr9
+
+# Sources
+- Qt6, client fortune exemple : https://doc.qt.io/qt-6/qtnetwork-fortuneclient-example.html
+- Qt6, server fortune exemple : https://doc.qt.io/qt-6/qtnetwork-fortuneserver-example.html
