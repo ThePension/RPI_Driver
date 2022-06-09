@@ -15,12 +15,11 @@ Client::Client(QWidget *parent)
     hostCombo->setEditable(true);
     hostCombo->addItem(QString("157.26.91.84"));
 
-    refreshGraphButton = new QPushButton(tr("Generate random data"));
-    startGettingDataButton = new QPushButton(tr("Start getting data"));
-
-    connect(refreshGraphButton, &QPushButton::clicked, this, &Client::generateRandomData);
+    stopButton = new QPushButton(tr("Stop"));
 
     statusLabel = new QLabel();
+
+    this->isRunning = (true);
 
     portLineEdit->setValidator(new QIntValidator(1, 65535, this));
 
@@ -33,41 +32,23 @@ Client::Client(QWidget *parent)
 
     auto buttonBox = new QDialogButtonBox;
     buttonBox->addButton(getDataButton, QDialogButtonBox::ActionRole);
+    buttonBox->addButton(stopButton, QDialogButtonBox::ActionRole);
 
     in.setDevice(tcpSocket);
     in.setVersion(QDataStream::Qt_4_0);
 
-    connect(hostCombo, &QComboBox::editTextChanged, this, &Client::enableGetDataButton);
-    connect(portLineEdit, &QLineEdit::textChanged, this, &Client::enableGetDataButton);
-    connect(getDataButton, &QAbstractButton::clicked, this, &Client::request);
+    connect(getDataButton, &QAbstractButton::clicked, this, &Client::getData);
     connect(tcpSocket, &QIODevice::readyRead, this, &Client::read);
-    connect(startGettingDataButton, &QPushButton::clicked, this, &Client::startGettingData);
+    connect(stopButton, &QPushButton::clicked, this, &Client::stop);
 
-    QGridLayout *mainLayout = nullptr;
-    if (QGuiApplication::styleHints()->showIsFullScreen() || QGuiApplication::styleHints()->showIsMaximized()) 
-    {
-        auto outerVerticalLayout = new QVBoxLayout(this);
-        outerVerticalLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::Ignored, QSizePolicy::MinimumExpanding));
-        auto outerHorizontalLayout = new QHBoxLayout;
-        outerHorizontalLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::MinimumExpanding, QSizePolicy::Ignored));
-        auto groupBox = new QGroupBox(QGuiApplication::applicationDisplayName());
-        mainLayout = new QGridLayout(groupBox);
-        outerHorizontalLayout->addWidget(groupBox);
-        outerHorizontalLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::MinimumExpanding, QSizePolicy::Ignored));
-        outerVerticalLayout->addLayout(outerHorizontalLayout);
-        outerVerticalLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::Ignored, QSizePolicy::MinimumExpanding));
-    } 
-    else 
-    {
-        mainLayout = new QGridLayout(this);
-    }
+    QGridLayout *mainLayout = new QGridLayout(this);
+
     mainLayout->addWidget(hostLabel, 0, 0);
     mainLayout->addWidget(hostCombo, 0, 1);
     mainLayout->addWidget(portLabel, 1, 0);
     mainLayout->addWidget(portLineEdit, 1, 1);
     mainLayout->addWidget(statusLabel, 2, 0, 1, 2);
     mainLayout->addWidget(buttonBox, 3, 0, 1, 2);
-    mainLayout->addWidget(startGettingDataButton, 4, 0);
 
     setWindowTitle(QGuiApplication::applicationDisplayName());
     portLineEdit->setFocus();
@@ -88,7 +69,7 @@ Client::Client(QWidget *parent)
     chart->addSeries(setRed);
     chart->addSeries(setBlue);
     chart->addSeries(setGreen);
-    chart->setTitle("Simple line chart example");
+    chart->setTitle("Color chart");
 
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
@@ -103,13 +84,30 @@ void Client::request()
     tcpSocket->connectToHost(hostCombo->currentText(), portLineEdit->text().toInt());
 }
 
-void Client::startGettingData()
+void Client::getData()
 {
-    /*while(true)
+    this->isRunning = true;
+    this->getDataButton->setEnabled(false);
+    this->stopButton->setEnabled(true);
+    this->getDataThread = std::thread(&Client::run, this, "Start getting data");
+}
+
+void Client::run(std::string msg)
+{
+    while(this->isRunning)
     {
-        this->request();
-        sleep(500);
-    }*/
+        // this->request();
+        this->generateRandomData();
+        sleep(1);
+    }
+}
+
+void Client::stop()
+{
+    this->isRunning = false;
+    this->getDataThread.join();
+    this->getDataButton->setEnabled(true);
+    this->stopButton->setEnabled(false);
 }
 
 void Client::read()
@@ -133,13 +131,6 @@ void Client::read()
     getDataButton->setEnabled(true);
 
     displayData();
-}
-
-void Client::enableGetDataButton()
-{
-    getDataButton->setEnabled(!hostCombo->currentText().isEmpty() &&
-                                 !portLineEdit->text().isEmpty());
-
 }
 
 void Client::generateRandomData()

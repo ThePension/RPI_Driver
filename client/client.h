@@ -8,6 +8,8 @@
 #include <QTcpSocket>
 #include <QtCharts>
 #include <unistd.h>
+#include <thread>
+#include <atomic>
 
 #include "../common/data.h"
 
@@ -29,19 +31,23 @@ public:
 public slots:
     void request();
     void read();
-    void enableGetDataButton();
     void generateRandomData();
     void displayData();
     void resetSeries();
-    void startGettingData();
+    void getData();
+    void run(std::string msg);
+    void stop();
 
 private:
+    std::thread getDataThread;
+    std::atomic<bool> isRunning; 
     QComboBox *hostCombo = nullptr;
     QLineEdit *portLineEdit = nullptr;
     QLabel *statusLabel = nullptr;
     QPushButton *getDataButton = nullptr;
     QPushButton *refreshGraphButton = nullptr;
-    QPushButton * startGettingDataButton = nullptr;
+    QPushButton * stopButton = nullptr;
+    QLegend * legend = nullptr;
 
     QTcpSocket *tcpSocket = nullptr;
     QDataStream in;
