@@ -1,5 +1,7 @@
 QT += core gui widgets network charts
 
+CONFIG += C++20
+
 SOURCES += main_client.cpp \
           mainwindow.cpp \
           client.cpp \

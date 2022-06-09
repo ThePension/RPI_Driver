@@ -98,7 +98,10 @@ void Client::run(std::string msg)
     {
         this->request();
         // this->generateRandomData();
-        sleep(1);
+        // sleep(1);
+        int k = 0;
+        for(int i = 0; i < 1000000000; i++) { k = sqrt(i); int l = i%5; int o = (int)(sqrt(i)) % 18; }
+        // std::this_thread::sleep_for (std::chrono::seconds(1));
     }
 }
 

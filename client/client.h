@@ -7,9 +7,14 @@
 #include <QDialog>
 #include <QTcpSocket>
 #include <QtCharts>
+#include <QtConcurrent/qtconcurrentrun.h>
+#include <QFuture>
 #include <unistd.h>
 #include <thread>
 #include <atomic>
+#include <iostream>
+#include <chrono>
+#include <math.h>
 
 #include "../common/data.h"
 

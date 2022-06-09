@@ -915,6 +915,12 @@ moc_mainwindow.cpp: mainwindow.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qvxymodelmapper.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qxylegendmarker.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qtchartsversion.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentrun.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentcompilertest.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrent_global.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentrunbase.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentstoredfunctioncall.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QFuture \
 		../common/data.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -1471,6 +1477,12 @@ moc_client.cpp: client.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qvxymodelmapper.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qxylegendmarker.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qtchartsversion.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentrun.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentcompilertest.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrent_global.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentrunbase.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentstoredfunctioncall.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QFuture \
 		../common/data.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -2045,6 +2057,12 @@ main_client.o: main_client.cpp mainwindow.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qvxymodelmapper.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qxylegendmarker.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qtchartsversion.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentrun.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentcompilertest.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrent_global.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentrunbase.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentstoredfunctioncall.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QFuture \
 		../common/data.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtWidgets/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main_client.o main_client.cpp
@@ -2602,6 +2620,12 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qvxymodelmapper.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qxylegendmarker.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qtchartsversion.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentrun.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentcompilertest.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrent_global.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentrunbase.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentstoredfunctioncall.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QFuture \
 		../common/data.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
@@ -3209,6 +3233,12 @@ client.o: client.cpp /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QtWidgets \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qvxymodelmapper.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qxylegendmarker.h \
 		/usr/include/x86_64-linux-gnu/qt5/QtCharts/qtchartsversion.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentrun.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentcompilertest.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrent_global.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentrunbase.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtConcurrent/qtconcurrentstoredfunctioncall.h \
+		/usr/include/x86_64-linux-gnu/qt5/QtCore/QFuture \
 		../common/data.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o client.o client.cpp
 
