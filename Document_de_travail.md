@@ -2,22 +2,27 @@
 
 ## setup git
 
+```shell
 cd ~/LinEmb/projects
-git clone https://gitlab-etu.ing.he-arc.ch/isc/2021-22/niveau-2/2247.1-linux-emb-il/gr9.git
 
-## 1. tester drvTest
+git clone https://gitlab-etu.ing.he-arc.ch/isc/2021-22/niveau-2/2247.1-linux-emb-il/gr9.git
+```
+
+## tester drvTest
 
 ### Commands
 
-#### Crée le dossier pour le driver
+### Créer le dossier pour le driver
 
 ```shell
 cd ~/LinEmb/pi4-config/package
+
 mkdir drvTest
+
 cd drvTest
 ```
 
-#### Crée les fichier de config du driver
+### Créer les fichier de config du driver
 
 ```shell
 cat << 'EOF' > Config.in
@@ -43,7 +48,7 @@ $(eval $(generic-package))
 EOF
 ```
 
-#### Ajouter le module à la configuration de buildroot
+### Ajouter le module à la configuration de buildroot
 
 ```shell
 cd ~/LinEmb/pi4-config/
@@ -53,19 +58,21 @@ sed -i '$ i\source "$BR2_EXTERNAL_PI4_CONFIG_PATH/package/drvTest/Config.in"' Co
 
 ```
 
-#### Menu config
+### Menu config
 
 ```shell
 cd ../build-pi4/
+
 make menuconfig
 ```
 
-Dans le menu `External options -> Custom packages` cocher `drvTest`. Sauvegarder et quitter.
+Dans le menu `External options -> Custom packages`, cocher `drvTest`. Sauvegarder et quitter.
 
-#### Compiler le noyau
+### Compiler le noyau
 
 ```shell
  export BR2_EXTERNAL=../pi4-config/
+
  make -j8
 ```
 
@@ -75,6 +82,7 @@ Dans le menu `External options -> Custom packages` cocher `drvTest`. Sauvegarder
 
 ```shell
  cd project/server
+
  make
 ```
 
@@ -86,7 +94,9 @@ scp test_drvTest rpi@157.26.91.84:/home/rpi/prg
 
 ```shell
 ssh rpi@157.26.91.84 # Password : rpi
+
 su # Password : root
+
 modprobe drvTest
 ```
 
@@ -94,7 +104,9 @@ modprobe drvTest
 
 ```shell
 cd /home/rpi/prg
+
 su
+
 ./test_drvTtest
 ```
 
@@ -126,8 +138,8 @@ Ensuite, pour compiler, entrer la commande
 make
 ```
 
-Une fois cela fait, nous avons créé et implémenter deux projets :
-- Un serveur, qui envoie des données (simulées pour l'instant) sur le réseau en cas de requête
+Une fois cela fait, nous avons créé et implémenté deux projets :
+- Un serveur, qui envoie des données (simulées pour l'instant, plus par la suite) sur le réseau en cas de requête
 - Un client, qui récupère les données demandées et les affiche sous forme de graphe
 
 Ces implémentations se basent grandement sur les exemples de server/client disponibles sur la documentation de Qt.
@@ -142,7 +154,7 @@ Comme notre driver récupère les données de couleur, nous avons créée une cl
 - blue
 - green
 
-Nous avons rendu cette classe sérialisable, afin de pouvoir la transmettre sur le réseau.
+Nous avons rendu cette classe sérialisable, afin de pouvoir la transmettre sur le réseau et donc de faciliter le transport.
 
 ## Lancer une application Qt GUI avec VNC
 
@@ -154,7 +166,7 @@ Après avoir copié l'exécutable sur le RPI :
 
 Puis, depuis la machine hôte, se connecter au RPI avec VNC sur le port 5900.
 
-# Compiler le client sur la VM
+## Compiler le client sur la VM
 
 ```shell
 sudo apt-get install qt5-qmake
@@ -163,7 +175,7 @@ sudo apt-get install libqt5charts5-dev
 sudo apt-get install qtbase5-dev-tools
 ```
 
-Regénérer le <i>Makefile</i> avec <i>qmake<i> :
+Regénérer le <i>Makefile</i> avec <i>qmake</i> :
 
 ```shell
 qmake qt-client.pro
@@ -176,19 +188,24 @@ make clean
 make
 ```
 
-## ajouter le driver dans l'image
+## Ajouter le driver dans l'image
 
 Refaire les mêmes étapes qu'avec le driverTest pour ajouter le driver à l'image .
 
-### charger i2c
+## Charger i2c
 
+```shell
 modprobe i2c-bcm2835
+
 modprobe i2c-dev
+
 modprobe drvI2C
+```
 
 # 30.05.2022
 
 Modification du serveur :
+- Transférer le serveur en mode console, pour ne plus devoir utiliser VNC
 - Récupérer les données du driver au lieu de les simuler
 - Améliorer l'interface graphique du client
 - Résoudre les potentielles erreurs
@@ -211,5 +228,6 @@ Notre client, dans un thread séparé, interroge le serveur toutes les secondes,
 Tous nos codes sources se trouvent sur GitLab, à l'adresse suivante : https://gitlab-etu.ing.he-arc.ch/isc/2021-22/niveau-2/2247.1-linux-emb-il/gr9
 
 # Sources
+
 - Qt6, client fortune exemple : https://doc.qt.io/qt-6/qtnetwork-fortuneclient-example.html
 - Qt6, server fortune exemple : https://doc.qt.io/qt-6/qtnetwork-fortuneserver-example.html
