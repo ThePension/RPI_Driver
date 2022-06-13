@@ -16,6 +16,7 @@
 #include <chrono>
 #include <math.h>
 #include <QTimer>
+#include <QPainter>
 
 #include "../common/data.h"
 

@@ -56,6 +56,22 @@ Client::Client(QWidget *parent)
     setBlue = new QLineSeries();
     setGreen = new QLineSeries();
 
+    QPen peni(QRgb(0x000000));
+    peni.setWidth(3);
+    setLuminosity->setPen(peni);
+
+    QPen penr(QRgb(0xff0000));
+    penr.setWidth(3);
+    setRed->setPen(penr);
+    
+    QPen peng(QRgb(0x00ff00));
+    peng.setWidth(3);
+    setGreen->setPen(peng);
+
+    QPen penb(QRgb(0x0000ff));
+    penb.setWidth(3);
+    setBlue->setPen(penb);
+    
     QValueAxis *axisY = new QValueAxis();
     axisY->setRange(0, 255);
     axisY->setTickCount(10);
