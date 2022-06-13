@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Client_t {
-    QByteArrayData data[12];
-    char stringdata0[97];
+    QByteArrayData data[10];
+    char stringdata0[81];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,14 +40,12 @@ QT_MOC_LITERAL(5, 40, 11), // "displayData"
 QT_MOC_LITERAL(6, 52, 11), // "resetSeries"
 QT_MOC_LITERAL(7, 64, 7), // "getData"
 QT_MOC_LITERAL(8, 72, 3), // "run"
-QT_MOC_LITERAL(9, 76, 11), // "std::string"
-QT_MOC_LITERAL(10, 88, 3), // "msg"
-QT_MOC_LITERAL(11, 92, 4) // "stop"
+QT_MOC_LITERAL(9, 76, 4) // "stop"
 
     },
     "Client\0request\0\0read\0generateRandomData\0"
     "displayData\0resetSeries\0getData\0run\0"
-    "std::string\0msg\0stop"
+    "stop"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,8 +69,8 @@ static const uint qt_meta_data_Client[] = {
        5,    0,   57,    2, 0x0a /* Public */,
        6,    0,   58,    2, 0x0a /* Public */,
        7,    0,   59,    2, 0x0a /* Public */,
-       8,    1,   60,    2, 0x0a /* Public */,
-      11,    0,   63,    2, 0x0a /* Public */,
+       8,    0,   60,    2, 0x0a /* Public */,
+       9,    0,   61,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -81,7 +79,7 @@ static const uint qt_meta_data_Client[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 9,   10,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -99,11 +97,12 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 3: _t->displayData(); break;
         case 4: _t->resetSeries(); break;
         case 5: _t->getData(); break;
-        case 6: _t->run((*reinterpret_cast< std::string(*)>(_a[1]))); break;
+        case 6: _t->run(); break;
         case 7: _t->stop(); break;
         default: ;
         }
     }
+    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject Client::staticMetaObject = { {

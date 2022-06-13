@@ -15,6 +15,7 @@
 #include <iostream>
 #include <chrono>
 #include <math.h>
+#include <QTimer>
 
 #include "../common/data.h"
 
@@ -40,12 +41,10 @@ public slots:
     void displayData();
     void resetSeries();
     void getData();
-    void run(std::string msg);
+    void run();
     void stop();
 
 private:
-    std::thread getDataThread;
-    std::atomic<bool> isRunning; 
     QComboBox *hostCombo = nullptr;
     QLineEdit *portLineEdit = nullptr;
     QLabel *statusLabel = nullptr;
@@ -66,4 +65,6 @@ private:
     QChart *chart = nullptr;
 
     QChartView *chartView;
+
+    QTimer * timer = nullptr;
 };

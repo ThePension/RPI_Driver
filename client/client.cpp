@@ -19,8 +19,6 @@ Client::Client(QWidget *parent)
 
     statusLabel = new QLabel();
 
-    this->isRunning = (true);
-
     portLineEdit->setValidator(new QIntValidator(1, 65535, this));
 
     auto hostLabel = new QLabel(tr("&Server name:"));
@@ -76,6 +74,9 @@ Client::Client(QWidget *parent)
     chartView->chart()->setAxisY(axisY, setLuminosity);
 
     mainLayout->addWidget(chartView, 4, 1);
+
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &Client::run);
 }
 
 void Client::request()
@@ -86,29 +87,19 @@ void Client::request()
 
 void Client::getData()
 {
-    this->isRunning = true;
     this->getDataButton->setEnabled(false);
     this->stopButton->setEnabled(true);
-    this->getDataThread = std::thread(&Client::run, this, "Start getting data");
+    timer->start(1000);
 }
 
-void Client::run(std::string msg)
+void Client::run()
 {
-    while(this->isRunning)
-    {
-        this->request();
-        // this->generateRandomData();
-        // sleep(1);
-        int k = 0;
-        for(int i = 0; i < 1000000000; i++) { k = sqrt(i); int l = i%5; int o = (int)(sqrt(i)) % 18; }
-        // std::this_thread::sleep_for (std::chrono::seconds(1));
-    }
+    this->request();
 }
 
 void Client::stop()
 {
-    this->isRunning = false;
-    this->getDataThread.join();
+    timer->stop();
     this->getDataButton->setEnabled(true);
     this->stopButton->setEnabled(false);
 }
@@ -116,8 +107,6 @@ void Client::stop()
 void Client::read()
 {
     resetSeries();
-
-    getDataButton->setEnabled(false);
 
     in.startTransaction();
 
@@ -129,9 +118,6 @@ void Client::read()
     }   
 
     if (!in.commitTransaction()) return;
-
-    statusLabel->setText("Datas received");
-    getDataButton->setEnabled(true);
 
     displayData();
 }
